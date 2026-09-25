@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1c2323">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="The Yule Ball — a Fexmouth story. A complete draft in sixteen sections.">
+  <title>The Yule Ball · Fexmouth</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #1c2323;
+      --surface: #252d2c;
+      --text: #e2dfd5;
+      --muted: #aaa99e;
+      --accent: #d4bc92;
+      --line: #404945;
+      --reading-size: 21px;
+      --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { min-height: 100%; scroll-padding-top: 6rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-text-size-adjust: 100%; }
+    ::selection { background: #6c6049; color: #fffaf0; }
+    button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    button { font: inherit; cursor: pointer; color: inherit; }
+    a { color: inherit; }
+    button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    button:disabled { cursor: default; opacity: .35; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; z-index: 10; top: -5rem; left: 1rem; padding: 1rem; background: var(--accent); color: var(--bg); text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+    .topbar { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); padding: env(safe-area-inset-top) max(28px, env(safe-area-inset-right)) 0 max(28px, env(safe-area-inset-left)); }
+    .topbar-inner { max-width: 1120px; height: 76px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-family: var(--serif); letter-spacing: .15em; font-size: 17px; text-decoration: none; padding: 13px 0; }
+    .running-title { font-family: var(--serif); font-size: 17px; color: var(--muted); margin-left: 22px; padding-left: 22px; border-left: 1px solid var(--line); white-space: nowrap; }
+    .running-draft { margin-left: 22px; font-size: 12px; color: #96998f; white-space: nowrap; }
+    .identity { display: flex; align-items: center; }
+    .toolbar { display: none; align-items: center; gap: 16px; flex-shrink: 0; }
+    .js .toolbar { display: flex; }
+    .type-controls { display: flex; align-items: center; gap: 2px; }
+    .type-controls button { width: 44px; height: 44px; background: transparent; border: 0; border-radius: 5px; font-family: var(--serif); font-size: 19px; }
+    .type-controls button:hover { background: var(--surface); }
+    .contents-button { min-height: 44px; padding: 0 16px; background: transparent; border: 1px solid var(--line); border-radius: 5px; font-size: 12px; letter-spacing: .04em; }
+    .contents-button:hover { border-color: var(--accent); color: var(--accent); }
+    .reading-track { height: 2px; background: transparent; position: absolute; bottom: -1px; left: 0; width: 100%; }
+    .reading-track span { display: block; background: var(--accent); height: 100%; width: 0%; transition: width .15s linear; opacity: .8; }
+    .reader { max-width: 760px; margin: 0 auto; padding: 0 38px 110px; }
+    .js .reader { padding-bottom: 160px; }
+    .book-cover { padding-top: 48px; padding-bottom: 10px; }
+    .edition { margin: 0 0 20px; color: var(--accent); font-size: 11px; font-weight: 500; letter-spacing: .23em; text-transform: uppercase; }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(49px, 7.4vw, 78px); line-height: 1.06; letter-spacing: -.05em; margin: 0; color: #f1e9d9; }
+    .cover-meta { margin-top: 28px; padding-top: 19px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; font-size: 11px; letter-spacing: .07em; color: var(--muted); }
+    .cover-meta .dot { padding: 0 9px; color: var(--accent); }
+    .draft-label { font-style: italic; font-family: var(--serif); font-size: 14px; letter-spacing: 0; }
+    .js .title-page { display: none; }
+    .js .title-page.is-active { display: block; }
+    #book-title { outline: none; }
+    .book-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 24px; margin-top: 20px; }
+    .begin-link { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 22px; padding: 0 21px; background: var(--accent); color: #202622; border: 1px solid var(--accent); border-radius: 5px; text-decoration: none; font-size: 13px; }
+    .begin-link:hover { background: #e0caa5; }
+    .resume-link { min-height: 44px; display: inline-flex; align-items: center; color: var(--accent); font-size: 12px; text-underline-offset: 5px; }
+    .front-navigation { margin-top: 15px; padding: 10px 0 12px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .front-jumps { display: flex; flex-wrap: wrap; gap: 4px 24px; align-items: center; }
+    .front-jumps a { min-height: 38px; display: inline-flex; align-items: center; color: var(--muted); font-size: 12px; text-decoration: none; }
+    .front-jumps a:hover { color: var(--accent); }
+    .front-chapter-label { margin: 10px 0 3px; font-size: 10px; color: var(--muted); letter-spacing: .08em; }
+    .front-chapters { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+    .front-chapters a { display: flex; min-height: 40px; align-items: center; justify-content: center; font-family: var(--serif); font-size: 13px; text-decoration: none; color: var(--accent); border-radius: 3px; }
+    .front-chapters a:hover { background: var(--surface); }
+    .front-section { margin-top: 28px; padding: 0; }
+    .front-heading { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; margin: 0 0 14px; color: var(--muted); scroll-margin-top: 105px; outline: none; }
+    .front-intro { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .cast-list { display: block; margin: 0; }
+    .cast-entry { margin-bottom: 9px; font-family: var(--serif); font-size: clamp(15px, calc(var(--reading-size) - 5px), 22px); line-height: 1.65; }
+    .cast-entry dt { display: inline; margin: 0; font: inherit; font-weight: 600; }
+    .cast-entry dt::after { content: ' — '; font-weight: 400; color: var(--muted); }
+    .cast-entry dt a, .cast-entry dt > span { display: inline; }
+    .cast-entry dt a { color: var(--text); text-decoration-color: #776f5e; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .cast-entry dt a:hover { color: #f0d9b2; text-decoration-color: var(--accent); }
+    .cast-entry dd { display: inline; margin: 0; color: var(--text); font: inherit; }
+    .supporting-cast { font-family: var(--serif); font-size: clamp(15px, calc(var(--reading-size) - 5px), 22px); line-height: 1.65; color: var(--muted); margin: 16px 0 0; }
+    .supporting-cast .supporting-label { display: inline; font: inherit; color: var(--muted); }
+    .supporting-cast .supporting-label::after { content: ': '; }
+    .supporting-cast a { color: var(--text); text-underline-offset: 3px; text-decoration-color: #776f5e; }
+    .front-prose { font-family: var(--serif); font-size: clamp(16px, calc(var(--reading-size) - 3px), 24px); line-height: 1.72; }
+    .front-prose p { margin: 0 0 1.05em; }
+    .front-prose p:last-child { margin-bottom: 0; }
+    .wiki-grid { display: flex; flex-wrap: wrap; gap: 0 24px; }
+    .wiki-card { display: inline-flex; min-height: 40px; align-items: center; padding: 0; text-decoration: none; }
+    .wiki-card:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .wiki-link-label { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--accent); }
+    .title-end { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .title-end > span { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 15px; }
+    .section-heading { display: flex; align-items: center; justify-content: center; gap: 17px; padding: 27px 0 30px; }
+    .section-heading h2 { margin: 0; font-family: var(--serif); font-size: 17px; font-weight: 400; letter-spacing: .06em; color: var(--accent); scroll-margin-top: 102px; outline: none; }
+    .section-rule { width: 31px; height: 1px; background: var(--line); }
+    .story-section { margin-top: 34px; }
+    .story-section:first-of-type { margin-top: 0; }
+    .js .story-section { display: none; margin-top: 0; }
+    .js .story-section.is-active { display: block; }
+    .js .story-section .section-heading { padding-top: 56px; }
+    .prose { font-family: var(--serif); font-size: var(--reading-size); line-height: 1.83; overflow-wrap: break-word; font-kerning: normal; }
+    .prose p { margin: 0 0 1.1em; }
+    .prose p:last-child { margin-bottom: 0; }
+    .opening::first-letter { font-size: 3.65em; line-height: .84; float: left; padding: .14em .12em 0 0; color: var(--accent); }
+    .wand-note { background: var(--surface); border-left: 2px solid var(--accent); padding: 24px 28px; margin: 1.6em 0; font-size: .91em; }
+    .wand-note .note-label { color: var(--accent); font-family: var(--sans); font-weight: 500; font-size: .81em; line-height: 1.5; margin: 1.9em 0 .5em; }
+    .wand-note .note-label:first-child { margin-top: 0; }
+    .end-mark { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 62px; color: var(--accent); letter-spacing: .25em; font-size: 10px; }
+    .end-mark span { width: 38px; height: 1px; background: var(--line); }
+    .pager { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; background: var(--bg); border-top: 1px solid var(--line); padding: 13px max(24px, env(safe-area-inset-right)) max(13px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
+    .js .pager { display: block; }
+    .pager-inner { max-width: 684px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+    .page-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid var(--line); border-radius: 5px; padding: 0 20px; background: transparent; font-size: 13px; }
+    .page-button:not(:disabled):hover { border-color: var(--accent); background: var(--surface); }
+    .page-button .arrow { font-family: var(--sans); font-size: 21px; line-height: 1; }
+    #previous { justify-self: start; }
+    #next { justify-self: end; color: #202622; background: var(--accent); border-color: var(--accent); }
+    #next:not(:disabled):hover { background: #e0caa5; }
+    .section-status { background: transparent; border: 0; min-width: 110px; min-height: 48px; padding: 4px 12px; text-align: center; color: var(--muted); }
+    .section-status .status-label { display: block; margin-bottom: 5px; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    #section-count { font-size: 12px; font-variant-numeric: tabular-nums; letter-spacing: .1em; }
+    .section-status:hover { color: var(--accent); }
+    dialog { width: min(600px, calc(100% - 32px)); max-height: min(760px, calc(100dvh - 48px)); padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); box-shadow: 0 20px 100px #0008; overflow: hidden; }
+    dialog::backdrop { background: rgb(8 13 13 / .8); }
+    .dialog-header { padding: 26px 28px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+    .dialog-header h2 { margin: 0 0 8px; font-family: var(--serif); font-size: 29px; font-weight: 400; }
+    .dialog-header p { margin: 0; color: var(--muted); font-size: 12px; }
+    .close-button { flex-shrink: 0; width: 44px; height: 44px; background: var(--surface); border: 1px solid var(--line); border-radius: 50%; font-size: 24px; }
+    .contents-list { margin: 0; padding: 10px 14px 20px; list-style: none; overflow-y: auto; max-height: calc(min(760px, 100dvh - 48px) - 125px); overscroll-behavior: contain; }
+    .contents-link { display: grid; grid-template-columns: 32px 1fr auto; gap: 14px; align-items: center; padding: 14px 12px; text-decoration: none; border-radius: 5px; border: 1px solid transparent; }
+    .contents-link:hover { background: var(--surface); }
+    .contents-link[aria-current='location'] { background: var(--surface); border-color: var(--line); }
+    .contents-number { color: var(--accent); font-family: var(--serif); font-size: 20px; font-variant-numeric: tabular-nums; }
+    .contents-copy { min-width: 0; }
+    .contents-copy strong { display: block; font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+    .contents-copy > span { font-family: var(--serif); font-size: 14px; color: var(--muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .contents-time { font-size: 10px; white-space: nowrap; color: var(--muted); }
+    body.dialog-open { overflow: hidden; }
+    .no-script { color: var(--muted); font-size: 13px; padding-top: 20px; }
+    @media (min-width: 1400px) { .book-cover { padding-top: 58px; } }
+    @media (min-width: 621px) and (max-width: 780px) {
+      .identity { display: grid; grid-template-columns: auto 1fr; column-gap: 18px; row-gap: 3px; }
+      .brand { grid-row: 1 / 3; }
+      .running-title { margin-left: 0; padding-left: 0; border-left: 0; }
+      .running-draft { margin-left: 0; }
+    }
+    @media (max-width: 620px) {
+      :root { --reading-size: 19px; }
+      html { scroll-padding-top: 5rem; }
+      .topbar { padding-right: max(19px, env(safe-area-inset-right)); padding-left: max(19px, env(safe-area-inset-left)); }
+      .topbar-inner { height: 63px; gap: 12px; }
+      .identity { flex-direction: column; align-items: flex-start; gap: 5px; }
+      .brand { font-size: 14px; letter-spacing: .12em; padding: 0; }
+      .running-title { display: none; }
+      .running-draft { margin-left: 0; font-size: 10px; }
+      .toolbar { gap: 8px; }
+      .type-controls { gap: 0; }
+      .type-controls button { width: 44px; }
+      .contents-button { padding: 0 12px; font-size: 11px; }
+      .reader { padding-right: 24px; padding-left: 24px; }
+      .book-cover { padding-top: 32px; padding-bottom: 8px; }
+      .edition { font-size: 9px; letter-spacing: .2em; margin-bottom: 17px; }
+      h1 { font-size: clamp(44px, 12vw, 67px); }
+      .cover-meta { margin-top: 23px; padding-top: 16px; align-items: baseline; font-size: 10px; letter-spacing: .025em; gap: 8px; }
+      .cover-meta .dot { padding: 0 5px; }
+      .draft-label { font-size: 12px; }
+      .book-actions { margin-top: 18px; gap: 10px 18px; }
+      .front-section { margin-top: 25px; }
+      .front-heading { font-size: 11px; scroll-margin-top: 88px; }
+      .front-chapters { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+      .front-jumps { gap: 0 20px; }
+      .title-end { flex-wrap: wrap; }
+      .section-heading { padding: 24px 0 24px; }
+      .prose { line-height: 1.8; }
+      .prose p { margin-bottom: 1.03em; }
+      .opening::first-letter { font-size: 3.5em; }
+      .wand-note { margin-right: -4px; margin-left: -4px; padding: 22px 20px; }
+      .pager { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); padding-top: 10px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+      .pager-inner { gap: 10px; }
+      .page-button { padding: 0 13px; gap: 9px; min-height: 48px; font-size: 12px; }
+      .section-status { min-width: 82px; padding: 3px 6px; }
+      .dialog-header { padding: 22px 20px 18px; }
+      .contents-list { padding-right: 9px; padding-left: 9px; }
+      .contents-link { gap: 8px; padding-right: 9px; padding-left: 9px; }
+      .contents-copy > span { font-size: 13px; }
+    }
+    @media (max-width: 360px) {
+      .reader { padding-left: 20px; padding-right: 20px; }
+      .topbar { padding-left: 16px; padding-right: 16px; }
+      .toolbar { gap: 4px; }
+      .type-controls button { width: 44px; }
+      .contents-button { padding: 0 9px; }
+      .cover-meta { flex-wrap: wrap; gap: 9px; }
+      .page-button { padding: 0 10px; gap: 7px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+    @media print {
+      :root { color-scheme: light; }
+      body { background: white; color: #171717; }
+      .topbar, .pager, dialog, .skip-link, .no-script { display: none !important; }
+      .reader, .js .reader { max-width: none; padding: 0; }
+      .book-cover { display: block; padding-top: 0; }
+      .title-page, .js .title-page { display: block !important; break-after: page; }
+      .book-actions, .title-end, .front-navigation { display: none; }
+      .book-cover h1 { color: black; font-size: 42pt; }
+      .front-heading { color: #333; }
+      .front-prose { font-size: 11pt; }
+      .cast-entry dt { font-size: 12pt; }
+      .cast-entry dd, .supporting-cast { font-size: 10pt; }
+      .cast-entry { break-inside: avoid; }
+      .cast-entry dt a, .cast-entry dd, .supporting-cast, .supporting-cast a, .wiki-link-label, .wiki-link-description { color: #333; }
+      .wiki-card { background: transparent; }
+      .edition, .cover-meta, .section-heading h2, .end-mark { color: #555; }
+      .story-section, .js .story-section { display: block !important; margin-top: 24pt; }
+      .section-heading, .js .story-section .section-heading { padding: 10pt 0; break-after: avoid; }
+      .prose { font-size: 11pt; line-height: 1.55; }
+      .prose p { orphans: 3; widows: 3; }
+      .opening::first-letter { color: #333; }
+      .wand-note { background: #f4f3ef; border-color: #888; }
+      .wand-note .note-label { color: #333; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#reading-start">Skip to the story</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="identity"><a class="brand" href="#title-page" aria-label="Fexmouth — return to the title page">FEXMOUTH</a><span class="running-title">The Yule Ball</span><span class="running-draft">First Complete Draft</span></div>
+      <div class="toolbar" aria-label="Reading controls">
+        <div class="type-controls" role="group" aria-label="Text size">
+          <button id="smaller" type="button" aria-label="Decrease text size" title="Smaller text">A−</button>
+          <button id="larger" type="button" aria-label="Increase text size" title="Larger text">A+</button>
+        </div>
+        <button type="button" class="contents-button" data-open-contents aria-haspopup="dialog">Sections</button>
+      </div>
+    </div>
+    <div class="reading-track" aria-hidden="true"><span id="reading-progress"></span></div>
+  </header>
+  <main class="reader at-title" id="reader">
+    <section class="title-page is-active" id="title-page" aria-labelledby="book-title">
+      <header class="book-cover">
+        <p class="edition">A Fexmouth story</p>
+        <h1 id="book-title" tabindex="-1">The Yule Ball</h1>
+        <div class="cover-meta"><span>16 SECTIONS<span class="dot" aria-hidden="true">·</span>ABOUT 54 MIN</span><span class="draft-label">First complete draft</span></div>
+        <div class="book-actions"><a class="begin-link" href="#section-1" data-begin>Begin reading <span aria-hidden="true">→</span></a><a class="resume-link" href="#section-1" id="resume-reading" hidden>Continue reading</a></div>
+      </header>
+      <nav class="front-navigation" aria-label="Title page contents">
+        <div class="front-jumps"><a href="#recap-heading" data-front-jump>Summary</a><a href="#cast-heading" data-front-jump>Dramatis personae</a><a href="#wiki-heading" data-front-jump>Wiki</a></div>
+        <p class="front-chapter-label" id="front-chapter-label">STORY SECTIONS</p>
+        <ol class="front-chapters" aria-labelledby="front-chapter-label"><li><a href="#section-1" data-story-link="1" aria-label="Read section I" title="Section I">I</a></li>
+<li><a href="#section-2" data-story-link="2" aria-label="Read section II" title="Section II">II</a></li>
+<li><a href="#section-3" data-story-link="3" aria-label="Read section III" title="Section III">III</a></li>
+<li><a href="#section-4" data-story-link="4" aria-label="Read section IV" title="Section IV">IV</a></li>
+<li><a href="#section-5" data-story-link="5" aria-label="Read section V" title="Section V">V</a></li>
+<li><a href="#section-6" data-story-link="6" aria-label="Read section VI" title="Section VI">VI</a></li>
+<li><a href="#section-7" data-story-link="7" aria-label="Read section VII" title="Section VII">VII</a></li>
+<li><a href="#section-8" data-story-link="8" aria-label="Read section VIII" title="Section VIII">VIII</a></li>
+<li><a href="#section-9" data-story-link="9" aria-label="Read section IX" title="Section IX">IX</a></li>
+<li><a href="#section-10" data-story-link="10" aria-label="Read section X" title="Section X">X</a></li>
+<li><a href="#section-11" data-story-link="11" aria-label="Read section XI" title="Section XI">XI</a></li>
+<li><a href="#section-12" data-story-link="12" aria-label="Read section XII" title="Section XII">XII</a></li>
+<li><a href="#section-13" data-story-link="13" aria-label="Read section XIII" title="Section XIII">XIII</a></li>
+<li><a href="#section-14" data-story-link="14" aria-label="Read section XIV" title="Section XIV">XIV</a></li>
+<li><a href="#section-15" data-story-link="15" aria-label="Read section XV" title="Section XV">XV</a></li>
+<li><a href="#section-16" data-story-link="16" aria-label="Read section XVI" title="Section XVI">XVI</a></li></ol>
+      </nav>
+      <section class="front-section" aria-labelledby="recap-heading">
+        <h2 class="front-heading" id="recap-heading" tabindex="-1">Previously in Fexmouth</h2>
+        <div class="front-prose" id="recap"><p>Fexmouth follows Augustus Tabernak—usually August, also known as Arya—a reclusive writer living with family in Manila. Books, games, philosophy and a vivid inner world offer refuge from a life that feels stalled. Family holidays, birthdays and outings with Juno, Emily and the rest keep interrupting that retreat. The stories move through remembered relationships, imagined households and the narrator’s “Other Place,” returning repeatedly to the desire to be loved. David’s withdrawal leaves August hurt and resentful; Niko, the German neighbor August is drawn to, wants friendship. Friends and family continue to offer company and care, often meeting resistance.</p>
+<p>Meanwhile, Elmer Gatdula’s experiments have changed the household. He creates a living duplicate of August, who is welcomed by the family and develops an independent life; rivalry gradually makes room for companionship. Beyond Manila, a CERN experiment unleashes a destructive black hole. The international “Wall of Light” slows it, while displaced Europeans arrive in the neighborhood and Juno’s family plans to move to Apayao in anticipation of the end times. Elmer then gives physical form to August’s guardian angel, Raziel, but a broken control laptop prevents him from reversing the process. Stranded in a human body, Raziel learns to eat and live among people, then takes up charity work and Instagram. The clone and the angel have become companions in a life August is beginning to rejoin.</p></div>
+      </section>
+      <section class="front-section" aria-labelledby="cast-heading">
+        <h2 class="front-heading" id="cast-heading" tabindex="-1">Dramatis personae</h2>
+        <dl class="cast-list"><div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Augustus%20Tabernak" target="_blank" rel="noopener noreferrer" title="August / Arya in the Fexmouth Wiki">August / Arya</a></dt><dd>Augustus Tabernak, the narrator: a reclusive writer, sharp observer, and tireless pursuer of love.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#August%E2%80%99s%20clone" target="_blank" rel="noopener noreferrer" title="The clone in the Fexmouth Wiki">The clone</a></dt><dd>Elmer’s duplicate of August, now part of the household, with a life and opinions of his own.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Raziel" target="_blank" rel="noopener noreferrer" title="Raziel in the Fexmouth Wiki">Raziel</a></dt><dd>August’s guardian angel, stranded in a human body and discovering food, friendship, and Instagram fame.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Elmer%20Gatdula" target="_blank" rel="noopener noreferrer" title="Elmer Gatdula in the Fexmouth Wiki">Elmer Gatdula</a></dt><dd>A wealthy inventor and old friend whose extraordinary experiments leave others with very practical problems.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Juno" target="_blank" rel="noopener noreferrer" title="Juno in the Fexmouth Wiki">Juno</a></dt><dd>A longtime friend and lawyer, more comfortable imagining romance than taking the first step.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Emily" target="_blank" rel="noopener noreferrer" title="Emily in the Fexmouth Wiki">Emily</a></dt><dd>The friend who gets everyone out of the house—and takes matchmaking into her own hands.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Annie" target="_blank" rel="noopener noreferrer" title="Annie in the Fexmouth Wiki">Annie</a></dt><dd>An artist, Juno’s colleague at a law firm, and Youssef’s former girlfriend.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Youssef" target="_blank" rel="noopener noreferrer" title="Youssef in the Fexmouth Wiki">Youssef</a></dt><dd>A Moroccan doctor at Makati Med whose beauty makes an immediate impression on the narrator.</dd></div>
+<div class="cast-entry"><dt><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Quibble" target="_blank" rel="noopener noreferrer" title="Quibble in the Fexmouth Wiki">Quibble</a></dt><dd>Elmer’s advanced AI, consulted for a Hogwarts House and a suitably personal wand.</dd></div>
+<div class="cast-entry"><dt><span>Enid Garcia</span></dt><dd>An acquaintance the narrator intensely dislikes; another guest at the ball.</dd></div>
+<div class="cast-entry"><dt><span>James “Jamie”</span></dt><dd>A shy Harry Potter fan and real estate agent attending the ball on his own.</dd></div>
+<div class="cast-entry"><dt><span>Dorian Dominguez</span></dt><dd>A stranger at the Yule Ball.</dd></div></dl>
+        <p class="supporting-cast"><span class="supporting-label">Also appearing or mentioned</span><a href="https://kaiser-augustus.github.io/fexmouth-wiki/#The%20Tabernak%20family" target="_blank" rel="noopener noreferrer" title="August’s parents in the Fexmouth Wiki">August’s parents</a>, who have welcomed the clone into their household; <a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Mrs.%20Gatdula" target="_blank" rel="noopener noreferrer" title="Mrs. Gatdula in the Fexmouth Wiki">Mrs. Gatdula</a>, Elmer’s mother; <a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Danny" target="_blank" rel="noopener noreferrer" title="Danny in the Fexmouth Wiki">Danny</a>, an old friend; <a href="https://kaiser-augustus.github.io/fexmouth-wiki/#David" target="_blank" rel="noopener noreferrer" title="David in the Fexmouth Wiki">David</a>, August’s former partner; and <a href="https://kaiser-augustus.github.io/fexmouth-wiki/#Dr.%20Taluntunan-Guyavera" target="_blank" rel="noopener noreferrer" title="Dr. Tal in the Fexmouth Wiki">Dr. Tal</a>, the psychiatrist encouraging August to go out.</p>
+      </section>
+      <section class="front-section" aria-labelledby="wiki-heading">
+        <h2 class="front-heading" id="wiki-heading" tabindex="-1">Further into Fexmouth</h2>
+        <div class="wiki-grid"><a class="wiki-card" href="https://kaiser-augustus.github.io/fexmouth-wiki/#Story%20Thus%20Far" target="_blank" rel="noopener noreferrer" title="A longer recap of the collected stories."><span class="wiki-link-label">The full story so far<span aria-hidden="true">↗</span></span></a>
+<a class="wiki-card" href="https://kaiser-augustus.github.io/fexmouth-wiki/#category/Characters" target="_blank" rel="noopener noreferrer" title="Meet the wider cast of Fexmouth."><span class="wiki-link-label">Character guide<span aria-hidden="true">↗</span></span></a>
+<a class="wiki-card" href="https://kaiser-augustus.github.io/fexmouth-wiki/#Reading%20order" target="_blank" rel="noopener noreferrer" title="Find the original stories in publication order."><span class="wiki-link-label">Reading order<span aria-hidden="true">↗</span></span></a>
+<a class="wiki-card" href="https://kaiser-augustus.github.io/fexmouth-wiki/#Timeline" target="_blank" rel="noopener noreferrer" title="Follow the events and connections between stories."><span class="wiki-link-label">Timeline<span aria-hidden="true">↗</span></span></a></div>
+      </section>
+      <div class="title-end"><span>The story begins at the gallery.</span><a class="begin-link" href="#section-1" data-begin>Begin reading <span aria-hidden="true">→</span></a></div>
+    </section>
+    <noscript><p class="no-script">All sixteen sections are shown below. Enable JavaScript for section-by-section navigation and text-size controls.</p></noscript>
+    <div id="reading-start" tabindex="-1"></div>
+    <section id="section-1" class="story-section" aria-labelledby="heading-1">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-1" tabindex="-1"><span class="sr-only">Section </span>I</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source class="opening">I had been dating a doctor for a while. A Moroccan doctor who came here a year or two ago, not because he found Manila particularly interesting or attractive, nor its people or customs, but because he wanted to go somewhere, anywhere but where he was, and he found that Manila was the most accessible. There was a program in his medical school that allowed for graduates to work in Manila for the experience, with opportunities for graduates to become naturalized citizens. Which was not especially hard, given that there was not really much competition when it came to becoming a Filipino citizen.</p>
+<p data-source>We met at a gallery opening. I had been dragged into it by Juno, whose friend at the law firm she worked for was also an artist. I had always wondered how this friend Annie had time to be a legal assistant as well as an artist, but my curiosity was satisfied when I got there. The gallery was called Silver Linings (a dreadful name for a gallery that is supposed to be a cultural paragon of taste, but there you are), and her art hung in the main gallery through which people entered. Various passages led to other, smaller exhibitions.</p>
+<p data-source>Annie’s exhibition was called Fell, and was supposed to be a “celebration” of the most brutal, most terrible yet most essential parts of life, through mixed-media art. Most of them incorporated very textured oil painting with sculpture that used unconventional material, like refuse or combs glued together or rolls of toilet paper dissolved in glue and then molded.</p>
+<p data-source>There was much effort, certainly, put into the works, although I had very profound doubts regarding their merit. Very profound, cosmic doubts. First of all, although she attempts to draw in a style that is supposedly “bad on purpose,” one cannot help but feel as though the “bad” part is too adept or natural. It is almost as if an actor who played a bad actor played that bad actor badly. It is an aesthetic experience, surely, that one had to experience firsthand—I suppose like any enduring work of art.</p>
+<p data-source>And of course Annie, being a charming woman, already had collectors: rich, old, lonely men who hoarded her work, driving up the prices as well as hopefully bringing her work to wider attention. By the time that we had gotten there, only a few hours after opening, all but a handful of the works had already been sold.</p>
+<p data-source>I was looking at one, named “To Ray, Whom I Loved, But Did Not Love Me Back.” It was a painting, but its canvas had been bent, so that a part of it served as the floor, onto which was perched a sculpture of a doll shaped like a girl, falling through space, held up by a thin, black wire. The painting on the canvas that served as the floor was painted in harsh, terrifying reds and browns, like a vortex that was a portal to hell, and as one traveled up the canvas, it transitioned slowly—never abruptly—into light blues, whites, and greens.</p>
+<p data-source>On the face of it, the idea was interesting, although it was not especially so, and the execution was worse. There was no real form or idea to what served as “heaven” and “hell,” apart from the muddled colors that were supposed to suggest the concepts. And the very opposition of these concepts is so immature, trite, and repetitive that I felt no work under such a simple and childish theme could surpass being merely interesting.</p>
+<p data-source>In the end, all of her work merely bored me.</p>
+<p data-source>I walked around, not saying much of anything, as I was wont to do when I did not find anything noteworthy, and then sat down. Juno walked with me, and then sat with me, and then Annie passed by and recognized her.</p>
+<p data-source>Juno introduced me. Annie had artificial red hair and was wearing contacts that turned her eyes a shade of green and gray. She was thin and beautiful and her pale skin and prominent features gave her the aura of an elven, otherworldly woman. It was apparent that she would be the type to have superior intelligence as well as an artistic streak. She was very nice and had a glowing smile.</p>
+<p data-source>“Juno’s told me a lot about you,” Annie said.</p>
+<p data-source>That surprised me, although I didn’t know why. Juno is one of my closest friends. We spent a lot of time together.</p>
+<p data-source>“Thank you,” I said. “Although I don’t know what she would be saying about me. I’m nobody.”</p>
+<p data-source>“She says you’re a writer.”</p>
+<p data-source>“I suppose in a very general sense.”</p>
+<p data-source>She smiled wider and nodded and did not say any more.</p>
+<p data-source>And it was here that someone walked up to her and wrapped an arm around her and kissed her and handed her a cup of the spiked punch from the buffet table. I looked at who it was, and it was the most handsome man I had ever seen. The most handsome man, even then, that I knew I was ever going to see.</p>
+<p data-source>“Babe,” Annie told this man. “This is Juno. She works with me at the law firm. And this is her friend, Arya. She’s a writer.” She turned back to us. “This is Youssef.”</p>
+<p data-source>He shook hands with Juno, and then he shook my mind. And I was overcome then with a sense of destiny. An overwhelming sense of destiny.</p></div>
+    
+  </section>
+<section id="section-2" class="story-section" aria-labelledby="heading-2">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-2" tabindex="-1"><span class="sr-only">Section </span>II</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>After that, I kept thinking about this person, if only because they were handsome. Naturally, I told my clone about it, and the first thing we did was try to find his social media. We found nothing. Then, we tried to find out if we could somehow scour public records of medical practitioners in Manila. Surely, they have those? Doctors are licensed, and we need to have some type of way to check whether a doctor we’re seeing is legitimate. If any such list exists, then we did not find it.</p>
+<p data-source>At some point, we realized that Raziel has all sorts of ancient and mystical knowledge. We reasoned that, perhaps, in his angelic form, he had knowledge of all things. These days, Raziel spent his time working. He volunteered at several organizations and charities and was building up a kind of portfolio. He had an Instagram channel where he posted both informative and thirst content where he showed off, although surreptitiously and under the guise of coincidence, his almost mythical physique.</p>
+<p data-source>I followed him, of course, and even helped him with technology, which he did not know how to use. He was a fast learner and pretty soon was doing everything himself. One time, when he invited me for dinner, and we were eating at the Hong Kong cuisine restaurant behind our house, I said: “You are teetering on the line between virtue and sin, no? In that you use your beauty to tempt. Even if it is for ultimately good ends.”</p>
+<p data-source>He was eating congee, as he was still not very accustomed to eating. He liked things like soup and other soft food, so that he could simply slide them down his throat.</p>
+<p data-source>“I tempt nobody, Augustus,” he said. “If they appreciate my beauty, then let them. God is the source of all things beautiful.”</p>
+<p data-source>“And if they long for you sexually?”</p>
+<p data-source>“That is natural. Very natural.”</p>
+<p data-source>I could have contradicted him, but I shrugged and continued to eat. I enjoyed going through his material. It would have been against my interests to convince him to stop, not that I would have succeeded. Despite his terse and easy responses, Raziel was an ancient creature created during the dawn of time. The wise thing to do would be to trust him. Although angels were also susceptible to catastrophic folly, as evidenced by Raziel’s fallen brother…</p>
+<p data-source>I moved the conversation along to Youssef. Raziel said that he did not know. He also said that he could not be expected to know every person on Earth; that was not within the domain of angels. They were not omniscient like God.</p>
+<p data-source>I sighed.</p>
+<p data-source>“Why don’t you ask Juno’s friend about him?” Raziel said. “Are they together? You shouldn’t butt into their relationship if they are together.”</p>
+<p data-source>“I don’t know if they’re together.”</p>
+<p data-source>“But you’re not saying they’re not together.”</p>
+<p data-source>“He gave her a glass of punch. He had his arm around her. I think maybe they were dating. She didn’t introduce him as her boyfriend, which she would, if they were together.”</p>
+<p data-source>Raziel considered this. “I suppose.”</p>
+<p data-source>We ate in silence for a while. I went through my phone. Raziel went through his as well. He took a selfie of himself with his food. The moment he posted it, I got a notification on my phone, which made me laugh. Although he already knew that I followed his material closely. He found my affection for him funny, probably because it was so predictable.</p>
+<p data-source>Then, Raziel broke the silence. “How’s David? Weren’t you with David?”</p>
+<p data-source>I swallowed and drank water. “We are no longer in touch.”</p>
+<p data-source>“I’m sorry, Augustus,” he said. “But that is just so typical.”</p>
+<p data-source>“He broke up with me. And then he vanished. When he came back, he had another girlfriend.”</p>
+<p data-source>“He was here only a few weeks ago. Something else must have happened.”</p>
+<p data-source>“We might have had a little argument.”</p>
+<p data-source>“He was very good to you.” He poured himself another glass of water from the pitcher and shook his head. “He was very, very good to you. He wasn’t perfect, as no man is perfect, but whenever it was within his power, he tried to be good to you.”</p>
+<p data-source>I shrugged. “What we had was not so important that I could overlook how annoying he was being right around that time.”</p>
+<p data-source>“What did he do that annoyed you so much, then?”</p>
+<p data-source>“I don’t want to talk about it.”</p>
+<p data-source>Raziel was not used to being visible to ordinary humans, and he had not yet mastered the art of hiding his feelings, so they showed on his face. He raised a single eyebrow and then rolled his gray eyes as he returned to his meal.</p></div>
+    
+  </section>
+<section id="section-3" class="story-section" aria-labelledby="heading-3">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-3" tabindex="-1"><span class="sr-only">Section </span>III</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>My clone was going through God of War. He was playing on the television in his room, and I was sitting on his bed watching his playthrough. I enjoyed having someone who shared my interests. Although it bothered me how many opinions we did not share. If we were essentially the same person, then shouldn't we both have the same perspective? But we decided that there were minute, infinitesimal factors at play we could not even start to consider. Especially not while he had to go through the list of games he had to experience for himself.</p>
+<p data-source>He was having difficulty with the soul eater, an enemy made of stone. He needed to deflect its projectiles, pick them up, wait for an opening when the hole on its torso was exposed, and then throw the projectile back in. He was having trouble being fast enough. I was the same way when I first played it.</p>
+<p data-source>He was grumbling when he died again. “Annoying… The timing is too quick. There’s no time to maneuver.”</p>
+<p data-source>“You could use your axe,” I said. “It’s slower, though.”</p>
+<p data-source>“I don’t want to…”</p>
+<p data-source>He eventually beat it after a few more tries. He huffed. “Fucking finally…” And then he went back to a more leisurely pace exploring the area where the dark elves lived.</p>
+<p data-source>While playing, he said, “Did you ever find out about that hot guy?”</p>
+<p data-source>“No,” I said. “I don’t know if I’ll ever see him again.”</p>
+<p data-source>“There’ll be others. There always are.”</p>
+<p data-source>“I guess.”</p>
+<p data-source>“Do you remember Claud?” He was looking at the widescreen television, navigating. “When you were in high school? And then Rex in college? And a long while after college, actually…”</p>
+<p data-source>“I loved Rex.”</p>
+<p data-source>“And when things got so bad he decided he wanted nothing to do with you anymore, didn’t you think you'd never love again or some stupid shit like that?”</p>
+<p data-source>“This is different.”</p>
+<p data-source>“Only difference is it’s more recent.”</p>
+<p data-source>The king of the dark elves appeared in the game, and my clone had to deal with him. Like me, he had built his Kratos as a tank. He took a lot of damage because we do not have very fast reflexes, but he was adept enough and was surviving the encounter, many times even parrying accurately.</p>
+<p data-source>I watched him for another hour or two. Right about this time, Juno sent me something, some meme that she wanted me to see. It was a joke about exercising and about how we always spoke about doing it but never did. I watched it, reacted, and then said: How is that friend of yours, Annie? I enjoyed her art. I saw more of it on her webpage.</p>
+<p data-source>She said that Annie was okay, that she had met her only a while ago because she had come from the office. Usually, Juno works from home. I realized that I absolutely had no more leads, and so I asked: Do you know whether that man she was with was her boyfriend?</p>
+<p data-source>Juno said that the man was a doctor whom Annie dated for a while, but they were no longer together. Annie had spoken much about it, Juno said. Annie was distraught about having lost him, given that he was such a good prospect. But things were “not meant to be.”</p>
+<p data-source>I said that I had a crush on him and wanted to see him again. Juno said that she was going to try to find out more about him, but she didn’t know if Annie would want to talk more about that guy. So I said: If you don’t want to ask her, I will. Why don’t you invite Annie to have dinner with us?</p>
+<p data-source>Juno had known me long enough to know that I was not being absurd. In my life I had done many things for men that others might consider excessive. My clone had complete access to my past, being essentially myself, and knew that my life has been characterized and punctuated by desperate acts in the name of manly affection. Juno knew this, too, since we had known each other for a little over 20 years at this point.</p>
+<p data-source>So, she said yes.</p></div>
+    
+  </section>
+<section id="section-4" class="story-section" aria-labelledby="heading-4">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-4" tabindex="-1"><span class="sr-only">Section </span>IV</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>Annie, Juno, and I met that weekend at Café Breton, which was beside Café Havana, in the open-air area of Greenbelt 5. This place was the legendary haunt of many whores and expats who sought to do business together. My friends and I enjoyed watching the drama that unfolded, as business of this nature was conducted. The food in Café Breton was good, too.</p>
+<p data-source>Annie was a very intelligent person. She was a lawyer, like Juno, and then studied fashion and art overseas in some New York institute. Despite this, there was no pride about her at all. Under different circumstances I would have liked to be her friend, especially since she did much to advance her career on both fronts: the legal and the artistic. Whatever the limitations of her creativity, I knew that such grit was infinitely more valuable. She was good, although not great, and with such perseverance she was bound for success, as with the same perseverance even the mediocre succeeded. And without the same perseverance, even the brilliant failed.</p>
+<p data-source>We were already having our dessert by the time I brought up the man I saw at the gallery. We were talking about love and about the future and about getting married, and casually I said: “You have a boyfriend, right? That man you introduced us to? What was his name?”</p>
+<p data-source>“Youssef,” Annie said. “I really liked him. But…” She was twirling her hair. “It just wasn’t meant to be.”</p>
+<p data-source>It was here that I learned he was a doctor at Makati Med. That he was from Morocco, and that he was voracious for success. He was pathologically ambitious. And Annie could not keep up with the constant tug of war she had to engage in against Youssef’s ambitions. She wanted to travel, to meet people, to go to the beach, to take a cruise, but Youssef was unwilling to ever miss an opportunity to advance his position at the hospital.</p>
+<p data-source>I could tell that she was really broken up about having lost him. Which led me to believe that it was the man, rather than her, that broke it up. And whatever excuses she might have for being better off without him were white lies she told herself to ease her pain. I was familiar with these tactics of self-consolation; she was as adept at them as I.</p>
+<p data-source>Because of this I could not bring myself to ask her directly about him. I knew, somehow, that she would be suspicious, and would think it low of me to have invited her, and to have consoled her, when in fact I sought to have Youssef for myself. I suppose in some way it could be seen as a sort of treachery.</p>
+<p data-source>Still, she said: “It’s a pity. I was going to come with him to the Harry Potter Yule Ball. He was my date.”</p>
+<p data-source>She was talking about the event that was going to be held at Resorts World Manila. Some stupid, overpriced event where people pretended they were in the movie.</p>
+<p data-source>“He’s going to be there?” I instinctively looked at Juno, who was also looking at me.</p>
+<p data-source>“I don’t know if he’s still going if I’m not going,” she said. “But we were going with a few other friends, and he did pay for a ticket. And he would never spend money on something he wouldn’t use… That was one of the things about him. At the time, I hated it. But looking back… It was charming, really. It was very charming.”</p>
+<p data-source>“You’re not going?” I asked.</p>
+<p data-source>“I already gave my ticket away. I couldn’t bear to see him again. Especially not there.”</p></div>
+    
+  </section>
+<section id="section-5" class="story-section" aria-labelledby="heading-5">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-5" tabindex="-1"><span class="sr-only">Section </span>V</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>My clone and I bought tickets to the Yule Ball, and when Raziel learned about what we were doing, he bought tickets, too. Emily was a fan of Harry Potter and came with us. She was going to go as a Gryffindor. My clone and I wondered together if we should both go as Ravenclaw or Slytherin, or perhaps one should go as Ravenclaw and the other as Slytherin. Finally, we decided that he would go to Ravenclaw, whereas I would be Slytherin.</p>
+<p data-source>Raziel had not read the books. He read the first one and was so enamored with it, despite his misgivings regarding the writing (“What a downgrade from Tolkien… Not even at the level of Le Guin…” he said), that he read all of the books and watched all the movies within the span of around three weeks. He basically did nothing else but think about the franchise around that time, and we had many interesting discussions regarding the characters, objects, concepts, and events there.</p>
+<p data-source>At one point, while reading the sixth book, The Half-Blood Prince, Raziel was interested in how Dumbledore sacrificed himself and tasked Snape with killing him. It reminded him, of course, of The Lord. But he was very critical of the comparisons because Dumbledore sacrificed himself when he was about to die in any case, and about to die as a result of a selfish and abominable act: Attempting to bring his sister back to life. Necromancy, Raziel called it, with disdain as if such a thing were even possible. Perhaps he had lived through times when it was.</p>
+<p data-source>Emily was at the house, then, and we had just finished watching a movie. We decided to order food, and we were eating it in my room.</p>
+<p data-source>Raziel was sitting Indian on the bed with chopsticks and a cup of noodles. He was saying: “I find nothing especially noble in Dumbledore. He is benevolent and supposedly the most powerful wizard who ever lived. He is supposed to be very wise. But he doesn’t seem very wise to me.”</p>
+<p data-source>“I don’t think he was very wise, either,” I said. “I mean, even putting the alleged necromancy aside, I don’t think he put enough of an eye on Harry, given Harry’s destiny. And many things that went awry were directly the result of his not minding this young and stupid boy. I mean, throughout most of the series Harry is barely 18.”</p>
+<p data-source>Emily said, “I think Dumbledore didn’t want certain information to be out there, so he was very secretive. I think maybe he was watching from the sidelines.”</p>
+<p data-source>“Even in the first book,” I said, “he let Harry, Ron, and Hermione go into the hidden place where the mirror of Erised was. How well hidden was that thing, that three kids were able to get to it? And even if you put aside the fact that these children almost died, how were these first years able to get to the philosopher’s stone? And of course by that time even Voldemort himself had gotten to it first.”</p>
+<p data-source>Raziel was shaking his head while scooping up noodles into his mouth. When he had swallowed, he muttered, “Incompetence…”</p>
+<p data-source>Still, Raziel found it enjoyable and fascinating. We asked him about his House, and he said Gryffindor (“Of course,” he grumbled). I said that he was more of a Hufflepuff to me.</p>
+<p data-source>“Excuse me?” Raziel said. He was prone to being deeply offended. He never acted irrationally or became cruel as a result, but his lofty dignity as one of the angels meant that he was aware always of his stature among God’s creatures. Especially among us mortals. “Nothing against the Hufflepuffs, including noble and short-lived Cedric Diggory, but I am more than a mere jolly and loyal friend. I am fierce like a lion. Perhaps sometimes foolhardy. As when I was beckoned into that cursed box created by your hell-bound friend Elmer.”</p>
+<p data-source>“That’s Slytherin talk,” Emily said.</p>
+<p data-source>Raziel’s brows furrowed at this. “I don’t think I even need to entertain that idea.”</p>
+<p data-source>“I hope not,” I said. “I don’t want you to be in the same house as me at the ball. You’d steal the spotlight.”</p>
+<p data-source>Raz finished his meal and threw his cup noodles in the trash. He sat on the couch in front of me, situated at the front of my bed, and looked through his phone. “Reminds me. I should check whether the custom robes I ordered are ready. Are your costumes ready?”</p>
+<p data-source>“Need to get my nails done,” I said. “Fix my wig. Get a wand. I don’t want one of those cheap wands…”</p>
+<p data-source>“I’ll send you the place where I had mine made,” Raz said. “Real wood. Custom. Bespoke.”</p>
+<p data-source>Anyone who has ever read Harry Potter, or even had a casual interest in it, was curious about their house. The matter is trivial, of course, because the Sorting Hat makes it clear to Harry that if the student being sorted wanted to be in a certain house, then the Sorting Hat would grant that request. But one does wonder, like Harry, about one’s inner essence, one’s tendencies and one’s predispositions. One’s objective self. Which is why online quizzes, no matter how stupid, have always been popular, along with horoscopes and personality tests (which have always been bunk but touted as science).</p>
+<p data-source>I’ve always been sorted into Ravenclaw. When the website came along, everyone tried to sort themselves using the quiz there, and every time I was sorted into Ravenclaw, even if the questions seemed like non sequiturs. Later, I asked Elmer’s AI Quibble (which was several hundred orders of magnitude more powerful than ChatGPT or Claud) to sort me based on everything it knew about me, after using it for a time and inputting other psychometric data I’ve gotten from Dr. Tal, and still it sorted me into Ravenclaw.</p>
+<p data-source>But many times Quibble also told me that Slytherin is a close second. The life of the mind was central to me, and that pushed it towards Ravenclaw, but I also had powerful tendencies that were characterized by ambition, purity, and self-interest.</p>
+<p data-source>Elmer, interestingly enough, was a Gryffindor. I wasn’t entirely convinced he hadn’t manipulated Quibble to say that.</p></div>
+    
+  </section>
+<section id="section-6" class="story-section" aria-labelledby="heading-6">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-6" tabindex="-1"><span class="sr-only">Section </span>VI</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>I had to go to Elmer’s to talk to Quibble, because I wanted to determine my wand. I could have just made it up, but I wanted some kind of basis, some kind of authority. At least, something outside myself that had knowledge of these things, just as the witches and wizards of London went to Mr. Ollivander when they wanted to buy a wand.</p>
+<p data-source>In Harry Potter, people were always looking for some kind of authority that would tell them who they are. Their first experiences at Hogwarts are about being told what kind of person they are, with their wands and their Houses. It disappointed me that Harry came to completely accept and become this throughout the series, rather than raging harder against it. Does this teach kids that they have some kind of unalterable destinies? That Harry was one thing at the moment his parents were murdered, and he could not help but fulfill this destiny to the very end? There are story reasons for these, but one must think of what message this sends to the children. Won’t anybody please think of the children?</p>
+<p data-source>Mrs. Gatdula said hi and didn’t pull me aside. I had brought Raz with me, and she exchanged a few words with him after me, telling him that she followed his social media. She squeezed his arm and said that he was doing good work at the gym. Elmer was already downstairs, so we went up to his room. Quibble only worked locally. Files from the Internet were “funneled” into it, as Elmer did not want it to be scouring the Internet, doing things of its own volition.</p>
+<p data-source>Elmer had a work station that was in his room, rather than the lab, and he had seven monitors, like one of those massive stations at the New York Stock Exchange. He let me sit down on his computer chair (which alone cost around Php 350,000), and I switched over to Quibble, which was already open. I think Elmer had been working on it.</p>
+<p data-source>“Hi Quibble,” I said aloud. It worked so well that talking to it like a person was the best way to communicate with it. Typing was as inefficient and ridiculous as texting someone who was already in front of you. “Just wanted to check up on my Hogwarts sorting and wand. We have a Yule Ball next weekend.”</p>
+<p data-source>“Hello Augustus,” Quibble said, in its positive but not necessarily gleeful way. It did not have a face or avatar in its user interface, but I’ve told Elmer many times to include some type of face, maybe generate one. It was certainly powerful enough to do it on its own. But Elmer said that it was unnecessary and possibly dangerous; we might begin to think of it as a living thing, which it was not.</p>
+<p data-source>“Where do you want to start?” Quibble said.</p>
+<p data-source>“I’m going as a Slytherin,” I said. “My clone is going to be going as Ravenclaw. I’m thinking that maybe because I’m going as Slytherin, we could emphasize in my next questions that side of me.”</p>
+<p data-source>“Perfect,” Quibble said. “I’ll focus on your Slytherin-related aspects.”</p>
+<p data-source>“Good. Tell me about my wand.”</p>
+<p data-source>It thought for a while. I could see on the user interface that it was gathering the data I had fed it before as well as going through our previous interactions. It took around six minutes before a file opened with its conclusions.</p>
+<aside class="wand-note" aria-label="Quibble’s wand description">
+<p data-source class="note-label">• Wood — Hornbeam.</p>
+<p data-source>Hornbeam becomes closely attuned to its owner’s magical style and personal principles. It suits your insistence that a work fulfill its intended purpose, alongside your strongly individual sensibility. This would become a highly personalized wand, difficult for someone else to use effectively.</p>
+<p data-source class="note-label">• Core — Dragon heartstring.</p>
+<p data-source>This supplies power, rapid learning, and the capacity for dramatic magic, with some temperament accompanying those strengths. It fits the creative energy of the combined portrait, particularly the intensity with which you can become absorbed in something you want.</p>
+<p data-source class="note-label">• Length — 12¾ inches.</p>
+<p data-source>My chosen proportion allows for expansive, expressive gestures while retaining the balance of a slender instrument. Its shaft would taper gradually to a fine point.</p>
+<p data-source class="note-label">• Flexibility — Slightly springy.</p>
+<p data-source>Responsive under deliberate pressure, with a definite return to its own shape. This represents firmness of purpose alongside an ability to explore, adapt, and become unexpectedly enthusiastic.</p>
+<p data-source class="note-label">• Appearance — Smoke-stained hornbeam with antique silver.</p>
+<p data-source>Deep brown, with the grain visible. Shallow branching grooves run around the handle, settling beneath the fingers. A single narrow antique-silver band marks the transition from handle to shaft.</p>
+<p data-source class="note-label">• Magical character — Precise, expressive, occasionally exuberant.</p>
+<p data-source>It excels at intricate charms and transformations: giving an imagined thing a convincing, detailed presence. Its characteristic excess would be producing an enchantment more elaborate than originally intended because its wielder became fascinated with the possibilities.</p>
+</aside>
+<p data-source>“An exacting instrument,” Quibble said. “It would learn your intentions exceptionally well. Although you’d still have to decide what those intentions are.”</p>
+<p data-source>Elmer was lying on his bed going lazily through his phone. “Nefarious ones, undoubtedly.”</p>
+<p data-source>I took a picture of the file with my phone. I turned the chair towards Elmer. “You’re not coming with us?”</p>
+<p data-source>“I don’t know anything about Harry Potter.” Elmer looked up from his phone, which he placed face-down on his stomach.</p>
+<p data-source>“You don’t need to,” I said. “It’s a ball. We’ll just dance and eat and drink and have a good time.”</p>
+<p data-source>“And why would I go to that overproduced shite, as opposed to some party or night club where I could go for free?”</p>
+<p data-source>“First of all,” I said, “we’re going to be pretending to be witches and wizards. That is going to be fun. Also, you don’t need to care about money. That’s one of the best things about being Elmer Gatdula.”</p>
+<p data-source>“And the massive cock?” Elmer said.</p>
+<p data-source>Raziel side-eyed him. He was sitting at the foot of Elmer’s bed. “Crude, faithless swine.”</p>
+<p data-source>Elmer laughed at this. “I’m just joking!”</p>
+<p data-source>“Disgusting joke,” Raziel said.</p>
+<p data-source>“Oh?” Elmer sat up. “And speaking of wands, how big is your cock, Raz? I mean, I’ve seen it flaccid, but I’m talking erect. At full power. Super Saiyan. Archangel style.”</p>
+<p data-source>“You will not speak about me in such a way,” the angel said, annoyed.</p>
+<p data-source>“Not as big as you hoped…” Elmer sighed. “Now, you are truly a human male.”</p>
+<p data-source>“You know what’s weird,” I said. “Raziel has seen my cock. He’s watched me shower and take a dump all my life. Right?”</p>
+<p data-source>Raziel said, “That follows from me being your guardian angel, doesn’t it? There’s nothing malicious about it, from my perspective. That is just what humans do. What animals do. They pass waste. They wash themselves.”</p>
+<p data-source>“Augustus has a tiny one, doesn’t he?” Elmer said.</p>
+<p data-source>“Yes,” Raziel said, quickly.</p>
+<p data-source>I blinked at him. “What the hell? Raz.”</p>
+<p data-source>Raziel looked at me with those big, gray eyes. “I only speak the truth.”</p></div>
+    
+  </section>
+<section id="section-7" class="story-section" aria-labelledby="heading-7">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-7" tabindex="-1"><span class="sr-only">Section </span>VII</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>The day of the ball, I was laying down my clothes on the bed and preparing to go to the shower when I heard a lot of noise coming from downstairs. I came out just as my clone came out of his own room, and we both looked out from the mezzanine to see a group of people coming in from the front door. There must have been around six, seven, eight people all in all.</p>
+<p data-source>“What’s happening?” I called down to my parents, who were behind the kitchen island counter having a meal. The chatter was so loud that they did not hear me, and my dad joked with someone among the group.</p>
+<p data-source>People in the group laughed, and I realized that he was talking to Raz, who was seated on the couch in front of the television.</p>
+<p data-source>I said louder: “What’s going on?”</p>
+<p data-source>Raz and my parents saw me. Raz said: “I’m having my makeup done.”</p>
+<p data-source>“Oh god…” I sighed and rolled my eyes. “Should have known he was going to make this into some kind of a production,” I told my clone.</p>
+<p data-source>“Yep…” The clone turned his phone towards me, and there was a reel from Raz’s Instagram, with scenes from our house and a caption: “Get Ready for the Yule Ball with me!”</p>
+<p data-source>“Let’s get you done up, too,” Raziel said. People were now setting up ring lights around him. Someone was brushing his face, and another was inspecting his nails.</p>
+<p data-source>I took him up on that offer. I was going to the salon, but this was probably going to get me done up much better than anyone at the salon could.</p>
+<p data-source>I went down after showering. Raz was having his makeup and hair done. He told me to sit on the other side of the couch, and told the others to work on me. In their presence, despite their friendliness, I felt suddenly so ugly and beneath them. I could almost sense myself in their place, thinking: My goodness, what a lost cause…</p>
+<p data-source>A gay guy with thick, black-rimmed glasses sat on a chair taken from our dinner table in front of me. He had a thin layer of foundation on his face that made him look pale, in an artificial way. His pink lip gloss shone in the light.</p>
+<p data-source>“What would you like?” he said, with a smile.</p>
+<p data-source>“I’m going to be wearing this wig.” I produced my blonde wig. “I don’t know, really, what should go with it, in terms of my makeup.”</p>
+<p data-source>He looked at the wig. He took it in his hand and brushed the hair with his fingers. “Can you put it on?” he said.</p>
+<p data-source>I put it on my head. I tucked a lock of hair behind my ear.</p>
+<p data-source>“Beautiful!” my dad said, who was watching from the side. “My daughter!” He was being humorous and good-natured. He was like this when he did not know what to say. He had never wanted his son to become queer. I knew how much it took for him to be this way.</p>
+<p data-source>I stuck my tongue out at him.</p>
+<p data-source>“I think we can go for a Luna Lovegood look,” he said. “What House will you be?”</p>
+<p data-source>“Slytherin.”</p>
+<p data-source>“Oh…” He sucked air in through gritted teeth. This threw a wrench into whatever plans he had been formulating. “Maybe we can do something like a sexy, dark Luna Lovegood.”</p>
+<p data-source>“Luna Lovebad,” Raz contributed, while his eyes were still closed and he was facing upward so that the makeup artist could do his contouring.</p>
+<p data-source>Scattered polite laughter.</p>
+<p data-source>I rolled my eyes at Raz and nudged him on the shoulder. Then, I turned back to the makeup artist and said, “We can do that. Whatever you want.”</p>
+<p data-source>After around an hour and a half, the artist sat back up. He took a mirror from his bag and showed me my face. I barely recognized myself in my beauty. It was as if who I had always been emerged from the shadows of my being. As if I had beheld my reflection for the first time in my life.</p>
+<p data-source>Raziel opened his eyes after having someone brush his face. He saw me too, and smiled.</p></div>
+    
+  </section>
+<section id="section-8" class="story-section" aria-labelledby="heading-8">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-8" tabindex="-1"><span class="sr-only">Section </span>VIII</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>The Ball started at 8PM, and we were on the road by 6. We knew that trying to get in there was going to be a whole ordeal. I was surprised that Raziel didn’t have some kind of pass, but it seemed as though he was not a big enough celebrity to merit that. Nor was he the type to ask; he would see such a thing as prideful and therefore dangerous.</p>
+<p data-source>Emily drove us in her Montero. In the car, Raziel took selfies and made a reel with us. We made funny faces and waved. I went through Annie’s social media to check if, somehow, she and Youssef had made up and were going together. There was no activity on her Instagram.</p>
+<p data-source>We got there, and there were lots of people, but the venue was large enough to accommodate all of the hundreds of people there without it being crowded. The entire floor of the Resorts World building had been closed off for the people waiting for the event.</p>
+<p data-source>As soon as we got off the escalator, people recognized Raziel and mobbed him. We said goodbye and left him there with his fans, where he took selfies and made reels. By the doors into the venue, there were stalls for robes, wands, books, toys, and all sorts of merchandise. I knew it was going to be a heavily-monetized event, but I could not help but feel that they destroy the magic.</p>
+<p data-source>We sat on a bench and took some selfies. It was nice to be beautiful. We took one of me with my head on Emily’s shoulder. One where we were pretending we were dueling. Another where I threw up my wand just as the picture was taken, so that it looked as though she disarmed me.</p>
+<p data-source>I could not help but scan the crowd looking for Youssef. I was looking for Annie, too, in case she knew where he was.</p>
+<p data-source>At some point, the lights dimmed. A spotlight shone on a grandfather clock in the corner. The long hand nudged towards the 12: It was exactly 8PM. Music played, along with an announcement: “Welcome, students, to the Resorts World Manila Harry Potter Yule Ball!”</p>
+<p data-source>I rolled my eyes at Emily, who was laughing, too.</p>
+<p data-source>“Brought to you by Muso International Corporation. Quality First. And Sunshine Plumbing and Air Conditioning. With Sunshine, you’re good to go.”</p>
+<p data-source>“Oh god…” I muttered.</p>
+<p data-source>The doors that led into the venue opened all at once, and the hosts emerged from the largest double doors. We could see that, even from here, the venue had been meticulously decorated.</p>
+<p data-source>The three hosts were two men and a woman: a Snape-like potions professor, a Dumbledore-like Headmaster, and a McGonagall-like witch. They did their little spiel, which was cute enough, and we then all had to line up and present our tickets to get in. Music began to play, and I realized that this was it. Whatever we were going to do was happening now…</p>
+<p data-source>And I think to myself: Didn’t I swear, a few months ago, to never leave the house? To imprison myself, as it were, into myself? And now here I am—released, free.</p>
+<p data-source>I couldn’t dwell on it. The line was moving.</p></div>
+    
+  </section>
+<section id="section-9" class="story-section" aria-labelledby="heading-9">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-9" tabindex="-1"><span class="sr-only">Section </span>IX</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>The ticket price was steep, but from what I saw when I stepped into the ballroom, it was worth it. The first thing you see is a massive chandelier that was made of elaborately carved copper, so that it resembled wood. Crystal hid flickering bulbs, so that the light emanating from it resembled that of candles. There were costumed service workers, pretending to be ghosts and prefects and caretakers and students from other wizarding schools. Lighting effects made it seem as though candles were floating in the fog above us, and fake windows made it seem as though we overlooked a vast sea, and in the distance, through some of them, one could somewhat make out a train, its engine puffing smoke into the black sky, heading towards us.</p>
+<p data-source>And the fans were all exquisitely dressed. None had come here dressed in perfunctory or merely functional clothes. They took a great deal of care to make sure that the illusion was maintained at all times, and after one spent the obligatory number of seconds standing with mouth agape in wonder at all of it, one could settle down at one of the tables and have a drink.</p>
+<p data-source>Emily, Juno, and I sat at a table. They were serving all kinds of drinks, named after those in the books and movies: Butterbeer, Fire Whiskey, and other things I did not recognize. And there were conventional drinks, too. I took a butterbeer and allowed myself some respite from my mission. Just being here, out of the house, feeling the way I did—even if I failed, I would have felt it was time well spent. In any case, Dr. Tal had been repeatedly reminding me that I should go out of the house, that I should revoke my status as hikikomori. Being there, I could not help but feel he was right.</p>
+<p data-source>“Well?” Emily was telling Juno, with a mischievous glint in her eye. We were all so beautiful. And with the setting, it felt like we were in a movie or a tale: We were capable of doing things that we would otherwise not do, because we were not in reality anymore. At least not while we were here.</p>
+<p data-source>Juno was looking at Emily. Her eyes in turn were so big, so innocent, as if naïve. She obviously heard her, but it was like no words were coming to her.</p>
+<p data-source>“I don’t know,” Juno finally said. “I didn’t know what I was saying at the time.”</p>
+<p data-source>“Of course you did,” Emily said. “Seemed like you’ve never been so sure of anything in your life.”</p>
+<p data-source>“What’s going on?” I said. I wiped the foam of the butterbeer from the top of my lip.</p>
+<p data-source>“Juno—” Emily began, but Juno waved her hands in front of her. Emily pushed them away. “Juno wants to find somebody to dance with tonight, and maybe find a boyfriend.”</p>
+<p data-source>I was drinking, but quickly put the drink down. “Great idea. Amazing idea.”</p>
+<p data-source>“Isn’t it time?” Emily said. “Even you knew it, the other day. There’s no better time. There’s no better place.”</p>
+<p data-source>“It wasn’t so scary,” Juno said, “when it wasn’t actually happening yet.”</p>
+<p data-source>Juno had had a boyfriend only once, and that one time she grew to despise not only him but the very notion of romantic relationships. At least, ones that involved her. She was more than happy to read about it, watch it, fantasize about it, and swoon about the idea of maybe becoming the girlfriend of her favorite CUT member (Daeyun), but in practice romance to her was inconvenient, overbearing, limiting, and embarrassing.</p>
+<p data-source>“We’re thirty-seven,” Emily said. “If there’s ever a time to try again, it’s now.”</p>
+<p data-source>“What’s wrong with waiting until thirty-eight?” Juno said.</p>
+<p data-source>Emily’s expression soured all at once. Suddenly, she was wearing a tired, scornful frown. Juno sucked in her lips in a grave show of fear, like a child biting down on their mouth after saying something they shouldn’t have. Emily produced her wand and tapped it lightly on Juno’s head.</p>
+<p data-source>“Accio common sense!” Emily said loudly.</p>
+<p data-source>“Fine! Fine!” Juno said. She took a sip of her drink. “But let me pick the man. I don’t want anyone ugly obviously, but I also don’t want anyone too handsome, because I’ll be too nervous to function.”</p>
+<p data-source>“Just shut up and let me do all the work.” Emily raised and lowered her eyebrows, trying to be suave. “Mama’s gonna take care of you.”</p>
+<p data-source>I was staring at her. “It scares me how much you’re enjoying this.”</p></div>
+    
+  </section>
+<section id="section-10" class="story-section" aria-labelledby="heading-10">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-10" tabindex="-1"><span class="sr-only">Section </span>X</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>I’ve been to parties a few times in my life. Enough to know that going to them never satisfied me. Having a good, substantial conversation is rarely possible at a party, where the event is supposed to be a bacchanal of hedonistic pleasures. This is why, in the Philippines, we more often engage in “inuman.” We drink with our closest group of friends, and we talk. Parties are rare, meant for when strangers would be joining. A party is more artificial, but the inuman was a very intimate event. I’ve had a lot more of that than parties.</p>
+<p data-source>And I noticed, now, why. Who do I talk to? Where do I begin? And if I decide to dance or go off on a long tangent or anything like that, what would the people I don’t know think?</p>
+<p data-source>Presently, people were clumped in groups, many standing because there were no more seats. They drank, and ate the finger food, and talked. They took pictures with the costumed staff.</p>
+<p data-source>My clone approached me. He was smiling and looked like he was having a good time. I had the sense that he had wandered off from talking to a group of people.</p>
+<p data-source>He leaned down towards me so I could hear him over the noise. “You know Enid is here?”</p>
+<p data-source>I stared at him with a grim expression. “Don’t make jokes like that. It ruins my mood.”</p>
+<p data-source>“I’m not joking.”</p>
+<p data-source>He looked at the crowd, and I followed his gaze. Enid wasn’t there. But then the crowd parted, and there she was, wearing Gryffindor robes, laughing and holding a glass of wine. Enid Garcia, who I despised. A pump woman with sharp, Arab features. Her face was always given to a quick smile or a maternal smirk. This kind exterior served her and her nefarious designs.</p>
+<p data-source>“Did you say hi?” I asked him.</p>
+<p data-source>“No.”</p>
+<p data-source>“Did she see you?”</p>
+<p data-source>“I saw her and then I looked away,” he said. “But I think she saw me.”</p>
+<p data-source>A woman’s voice I recognized as the witch came on the speakers and told us that the Beauxbatons dance troupe (they had a dance troupe?) is ready to perform on the stage. Anyone who wanted to watch could come to the front of the ballroom or to the mezzanine. The crowd was already quite dense on the first floor, so we went up the stairs on one side of the ballroom so that we could have a view of the stage from there.</p>
+<p data-source>The dance crew were dressed like the French students in the film. However, because we were seeing them from so far away, it looked like they were dressed as Air Korea stewardesses. That being said, the dance had the flowing elegance of the students in the movie, and I could tell that they were professionals.</p>
+<p data-source>From up there, I saw Emily with Juno. They were at the Butterbeer Bar. Juno was seated, while Emily stood beside her, whispering into her ear. They were both looking at a man across the bar—a good-looking man in Ravenclaw robes drinking alone with his head down, as if shy. He was tucked in the corner of the bar, around the bend against the wall.</p>
+<p data-source>I scanned the crowd further and found Raz. He had his back turned towards the stage with his phone facing him, and he was moving around with his lips pursed, trying to be cute. It amazed me to think that Raziel had beheld personally the face of God. That he was there when Adam and Eve lived in the Garden of Eden, when they ate of the fruit of knowledge, when they were banished. He was there during all Biblical times, the passion of Jesus. All of it. And yet here he was, acting as if he was born only years ago. No more than 25, from the looks of what he was doing now.</p>
+<p data-source>I looked around further. I was looking for him, for Youssef…</p>
+<p data-source>I had not seen him for so long that the image of him in my mind was beginning to fade. I had begun to think that even if I saw him, I would not recognize him. Maybe he hadn’t come after all.</p>
+<p data-source>“Didn’t come, huh…?” my clone said.</p>
+<p data-source>“Don’t know,” I said. “But I can’t find him.”</p>
+<p data-source>“There are so many guys here. Get to know somebody. Who needs that specific guy? That one guy that you laid eyes on for a while like, what, a month or two ago?”</p>
+<p data-source>I made sure my expression did not betray my deep, illogical disappointment. But there was no point. My clone knew me better than anyone. I know that, had he been there, he would be the one feeling what I felt right now, as we were made from the same stuff. The same essential stuff that was weak to such sights and such people and such men. Such terribly handsome, striking men…</p></div>
+    
+  </section>
+<section id="section-11" class="story-section" aria-labelledby="heading-11">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-11" tabindex="-1"><span class="sr-only">Section </span>XI</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>The venue was large enough that there were several activities happening at the same time. We not only had the ballroom but also several smaller rooms on the wings. There was House Championship Trivia, a bartending show, a mock duel, an interactive class on herbs and potions, and all sorts of things.</p>
+<p data-source>A few days later, when we were able to ruminate on the events of the evening, Emily and Juno told us about things that happened after the opening dance.</p>
+<p data-source>The boy they were staring at, I would find out later, looked a bit like Harry Potter. That was one of the things that Juno found attractive in him.</p>
+<p data-source>“Are you ready?” Emily told her. She raised her hand, to attract the attention of the bartender. “If he doesn’t make a move, it’s going to have to be us.”</p>
+<p data-source>Juno reached over and lowered Emily’s arm. “I don’t know if I’m ready.”</p>
+<p data-source>“What are you talking about?” Emily huffed. “This is the problem with you. This is why you still haven’t gotten a long-lasting relationship after all this time. You’re afraid. And you’re not afraid of being rejected or something bad happening. You’re afraid to even try.”</p>
+<p data-source>“You’re right,” Juno said, nodding. “You’re so right. I’m so wrong. You’re so right. Let’s get out of here.”</p>
+<p data-source>“No.” Emily raised her hand again. “I’m taking control tonight. You can have your life back at the end of the night. But for now, I’m the Captain.”</p>
+<p data-source>“What?”</p>
+<p data-source>“No what. No what. Say: Aye, aye, Captain.”</p>
+<p data-source>“Aye, aye.”</p>
+<p data-source>“Aye, aye what?”</p>
+<p data-source>“Captain.”</p>
+<p data-source>The bartender with spiky bleached white hair was already there, his arms outstretched on either side of him. He was staring at them, his eyes going back and forth between Juno and Emily. “Sorry to interrupt,” he said, pulling back the sides of his lips to force a smile. “Can I help you?”</p>
+<p data-source>“Nope,” Juno told him.</p>
+<p data-source>“Shush.” Emily turned to the bartender. “Can you send that man right there a drink from us, please? One…” She looked back at the menu in front of them. “A Dragon’s Poke.” She looked at Juno: “Very appropriate.”</p>
+<p data-source>“Please don’t,” Juno said, with increasing desperation. She was looking at Emily, and then she turned at the bartender, and then at Emily again. “Don’t do it. Don’t you dare.”</p>
+<p data-source>The bartender pointed at Juno. “Is she okay?”</p>
+<p data-source>“Don’t mind her,” Emily said. “She’s sick. She’s very sick.”</p>
+<p data-source>“Oh…” The bartender straightened up. “I mean, it’s not something we should be aware of, right?”</p>
+<p data-source>Emily leaned forward and whispered to be discreet. “She’s a lawyer.”</p>
+<p data-source>The bartender’s face curled into one of disgust. He turned and then left to mix the drink.</p></div>
+    
+  </section>
+<section id="section-12" class="story-section" aria-labelledby="heading-12">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-12" tabindex="-1"><span class="sr-only">Section </span>XII</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>At this time, my clone and I were at the dueling event. Two people were strapped onto wires that pulled them backwards onto mattresses that simulated being pushed back by sort of magical spell. They used cameras to detect the very instant someone flicked their wand. Colored lights flashed as the person was yanked backwards. Anyone who wanted to participate had to sign a very detailed waiver. No photography was allowed. Probably in case someone snapped their neck or cracked their skull crashing into the mattress.</p>
+<p data-source>Raz walked up the raised area. Everyone applauded upon seeing him. Raz waved at them and smiled, while staff strapped him in. They were evidently having some trouble.</p>
+<p data-source>“Macho!” a girl from the crowd said loudly, to laughter and applause.</p>
+<p data-source>Raz, too, was laughing, and he curled his right arm to show his bulging bicep.</p>
+<p data-source>My clone was shaking his head as he applauded. “Can you believe this prick has the gall to tell us right from wrong when he’s not in front of his fans?”</p>
+<p data-source>“Been reading up on him, actually.” I kept my eye on Raziel. I realized then that he never smiled the way he was smiling right now whenever it was only us. Me and him and our friends. “He has good reason to want fans, after everything he’s been through.”</p>
+<p data-source>“Oh? And why’s that?”</p>
+<p data-source>I was going to say, but I noticed that someone else had come up the stage. And whatever I was going to say had gave way to a low growl of revulsion. “Enid…”</p>
+<p data-source>She plopped herself onto the stage, barely managing to get up without the assistance of the staff who made sure that she did not tumble off. She was giggling to herself, muttering about how she was nervous and didn’t know what to do and was embarrassed but couldn’t help but try something that looked so fun.</p>
+<p data-source>“Well…” My clone chuckled upon seeing what I was seeing. “We’ve got a real battle of good and evil here, don’t we?”</p>
+<p data-source>Raz was ready and was fiddling with his hand. They were strapping Enid in as well, but then someone else came up: A man in a long, fur-lined coat. He had long hair in dreadlocks and was wearing round-lensed shades. He spoke to Enid and the staff attending to her. We couldn’t hear what he was saying.</p>
+<p data-source>Seconds later, she was nodding and the staff removed her straps. They helped her down, and the man took her place.</p>
+<p data-source>“Couldn’t wait I guess,” my clone said.</p>
+<p data-source>“Guess not,” I said.</p>
+<p data-source>He had to remove his coat. Inside, he was wearing a long-sleeved shirt, but it turned out that even though his body was covered, he was about as muscular as Raz. His dark skin and his features showed that he was a foreigner.</p>
+<p data-source>When all was prepared, they stood there at the ready.</p>
+<p data-source>A host, the Dumbledore-like one, held a mic and spoke between them like a referee. “Alright, we’re ready to duel!”</p>
+<p data-source>Applause.</p>
+<p data-source>“In the corner, we have Raziel de la Cruz!” The applause was mixed now with girls and gays emitting high pitched screams. “And in this corner, Dorian Dominguez!”</p>
+<p data-source>They cheered for him, too, although this time only politely.</p>
+<p data-source>These two men produced their wands. Dorian had a wand that was white, rather than the more typical brown, and he held it with a lightness that reminded me of the way Voldemort held it. They bowed to each other.</p>
+<p data-source>They then turned, so that they were back to back, and were instructed to take three steps apart. The wizard then said that, on his mark, they would turn around as fast as they can and wave their wand, shouting: Expelliarmus!</p>
+<p data-source>The wizard raised his hand. The two men held their wands upwards towards their chins against their chest. We waited.</p>
+<p data-source>“Duel!” the wizard said.</p>
+<p data-source>And the two sides turned towards each other. A flash of light. But neither of them had been pulled back. They were both still standing there. A whooshing sound revealed that someone should have been.</p>
+<p data-source>Instead, the two men were looking at each other. Only Raz had his wand pointed at Dorian, one foot forward, as if he were really expecting some kind of projectile to emerge from it. But Dorian was standing there, calm, with an almost amused expression.</p>
+<p data-source>Raz straightened up. Seeing that something had gone wrong, he playfully tapped the end of his wand on his open palm and then scratched his head.</p>
+<p data-source>The crowd laughed. Some made wooing sounds. Others clapped spontaneously.</p>
+<p data-source>Dorian said, “I’ve been looking for you, Gallitsur.”</p>
+<p data-source>At this, Raziel’s easy grin vanished. “What did you say?” He took one step closer.</p>
+<p data-source>“What are you doing here?” Dorian said. “And why are you like this? Is this really what you’ve been reduced to? The guardian of all the secrets and knowledge of the universe, playing pretend with these children?”</p>
+<p data-source>“Who are you?” Raziel was serious now, and he was standing in the contrapposto stance in which I first saw him—his shoulders squared, one foot slightly in front of the other. His brow now showed that characteristic indignant rage. “How do you know me?”</p>
+<p data-source>Everyone was so engrossed in what was happening. They must have thought that it was part of the show. It made sense: Raz was relatively famous. Someone so well dressed took the place of Enid, who was supposed to go against him. For a second, I considered that maybe it was scripted, and Raz had simply neglected to tell me that he was going to do something like this.</p>
+<p data-source>But I thought that his face was too authentic. After the dinner with the Gatdulas, I knew that he was not a very good actor. And more than that, I knew what Dorian called him: Gallitsur, Hebrew for Revealer of the Rock. Raziel’s ancient and sacred name.</p>
+<p data-source>Dorian took one step forward. So did Raziel.</p>
+<p data-source>“Wait, wait!” the host was saying, trying to get between them. The other staff also rushed to their aid, including security who were there to assist, but in a wave of his hand, they were all thrown backwards, flung by an invisible force. They landed off the stage, into the crowd, which scattered so that they would not land on them. Some people were exiting the venue. But many others were watching still.</p>
+<p data-source>I pushed through the crowd so that I could be as close as possible. My clone followed.</p>
+<p data-source>Raziel threw off the harness and ran. Dorian ran towards him as well. When the two men met at the center of the stage, they pushed against each other, their hands clasped together, their faces only inches from their opponent. Their wrestling match seemed to be totally equal, and neither could best the other.</p>
+<p data-source>“I recognized you the moment I saw you,” Dorian said, almost gleeful. Raziel’s own face was reflected on the lenses of his shades. “I know who you are. What you are. But how did you get here?”</p>
+<p data-source>“What do you want?” Raziel said. Sweat was forming on his brow, but neither of them moved. “Tell me!”</p>
+<p data-source>“Show me your power, Gallitsur,” Dorian said.</p>
+<p data-source>“Whoever you are,” Raziel responded. “Stop this.”</p>
+<p data-source>“Show me!”</p>
+<p data-source>Dorian kicked Raziel, pushing him off their grapple with the sole of his boot to the chest, and he did this so quickly and forcefully for most of the people in the crowd, all they saw was Raziel lifting off the ground—as if he were still harnessed and thrown the opposite way.</p>
+<p data-source>Now, the entire crowd moved back. They did not want anything to do with whatever was happening here, but they also could not look away, the sight being so strange and seemingly supernatural.</p>
+<p data-source>Raziel hit the bare wall with a thud before falling to the ground with another. He was strong, but he was obviously hurt. He wiped his mouth with his forearm and there was blood.</p>
+<p data-source>Dorian walked towards Raz, his boots pattering against the stage in a steady rhythm. “Weak!” Suddenly, he was furious. “What happened to you? Is this truly the creature who guards all the secrets of the world?”</p>
+<p data-source>Raz attempted to stand, but he stumbled, and had to lean against the wall to get on his feet. Despite the strength of his human form, he was still susceptible to all human weakness. No man could have walked away unscathed from the force with which he hit the wall and fell.</p>
+<p data-source>Security personnel entered the ballroom. They were carrying rifles and pointing them towards Dorian. They positioned themselves between the two men and the crowd. They pushed me back, too.</p>
+<p data-source>“Sir!” one of the personnel said. “Put your hands up. Now.”</p>
+<p data-source>“Oh, please…” Dorian sighed, exasperated, and waved his hand towards the personnel, shoving them all backwards, causing them to all drop to the floor. One of them accidentally fired their rifle as they fell, shooting a few rounds into the ceiling.</p>
+<p data-source>The crowd yelped in surprise, and there was some panic as people tried to run. I pushed people aside as I went the other way, so that I could keep seeing what was happening.</p>
+<p data-source>Dorian took Raz by the chin, a thumb on his cheek and his fingers on the other, and looked deep into his eyes. “Show me that power,” Dorian said with a snarl. “Or I will take it.”</p></div>
+    
+  </section>
+<section id="section-13" class="story-section" aria-labelledby="heading-13">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-13" tabindex="-1"><span class="sr-only">Section </span>XIII</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>The bartender placed the drink in front of the boy. It was a red drink that was darker at the bottom, where it was a deep maroon, and lighter on top, where it was closer to pink. The boy looked up, surprised. The bartender, whose back was turned to Emily and Juno, pointed to them with a thumb over his shoulder.</p>
+<p data-source>The boy’s gaze switched to them. He smiled and unsure smile. And, trying to be heard over the noise around them, shouted: “Mind if I join you?”</p>
+<p data-source>Juno was smiling. She cupped her hands around her mouth. “Yes.”</p>
+<p data-source>Emily smacked her hands away from her face and glared at her for a second before turning back to the boy and saying, “Please. Come join us.”</p>
+<p data-source>The boy brought his drink over and sat down beside Juno. They learned that his name was James, though he preferred to be called Jamie. They noted, with some laughter, that he was named after Harry’s father. He came as Harry himself, with a fairly convincing bolt-shaped scar on his forehead. They learned that he was a real estate agent. And there was a shy easiness about him, an awkward charm that made him frequently look away as if he had said something that he shouldn’t have, but couldn’t help himself out of enthusiasm.</p>
+<p data-source>“Did you come here alone?” Emily said, leaning out onto the table, so that Jamie could see her, as she was seated on the opposite of Juno.</p>
+<p data-source>Juno was looking at her, and then turned her head towards Jamie.</p>
+<p data-source>“I did, yeah,” Jamie said. “I’m a huge Potter fan so I decided to go for it, even if I didn’t really have any friends who wanted to go. I’ve met someone online friends here, though. People I talk to in message boards and stuff. You like Harry Potter?”</p>
+<p data-source>Emily began to say something, and Juno turned her head towards her. “I dabble… I mean, I’ve seen all the films, and I’ve read the books. Recently, I’ve been into Lord of the Rings.”</p>
+<p data-source>“Oh, yeah?” Jamie said, making Juno turn towards him now.</p>
+<p data-source>“Yeah,” Emily said, and Juno turned her head quickly again.</p></div>
+    
+  </section>
+<section id="section-14" class="story-section" aria-labelledby="heading-14">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-14" tabindex="-1"><span class="sr-only">Section </span>XIV</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>“Fine,” Dorian said, releasing Raz’s face, so that his head falls limp. “If you will not reveal your secrets to me, then I shall take it myself.” He reached into his coat with his slender, delicate hands, and then produced a dagger with a blade that was a shade of green and blue.</p>
+<p data-source>Raziel lifted his head and upon seeing the weapon there was a wave of recognition.</p>
+<p data-source>“I see you know this weapon.” Dorian held the dagger upright. With his other hand, he held Raziel by the hair, to lift his head and he could gaze upon the object. “Tell me its name, Gallitsur.”</p>
+<p data-source>“How?” was all Raziel could say.</p>
+<p data-source>Dorian shook his head. “I had wished we could have been friends…” He placed the blade against Raziel’s neck.</p>
+<p data-source>In surprise and fear, I had rushed towards him, but the personnel were ushering people out, still, and they kept me from heading forward. “Everyone out!” they kept repeating. “Everyone out! Now!”</p>
+<p data-source>I used all my strength to resist. My clone was still beside me, doing the same thing. Eventually, they left us and herded out the others around me.</p>
+<p data-source>Raziel suddenly raised his hand and grasped Dorian’s wrist. Dorian seemed to smirk at this. Then, the angel looked straight at him and began to say something. He was speaking so fast and so softly that I couldn’t make out what he was saying, but something came over him, and his visage became terrifying and powerful somehow. The blade was still against his neck.</p>
+<p data-source>“Yes…” Dorian said, while Raziel continued to chant. “Show me.”</p>
+<p data-source>Dorian was putting all his strength into his hand. His smile faded, and his jaw tilted as he pushed into the blade, trying to cut Raziel. Now that there was no one there, my clone and I went closer. We thought that maybe we could help him. But he turned his head, somehow aware that we were approaching, and raised his other hand to tell us to stop. We did so.</p>
+<p data-source>His opponent took no notice of us. Instead, Dorian used his other hand to grasp Raziel by the neck. Raziel gripped the wrist of this hand as well. Throughout this, he never stopped chanting.</p>
+<p data-source>The dagger glowed a brilliant green, the way a metal would glow red when forged. Dorian looked at it with a mixture of amazement and satisfaction. This seemed to confirm it. Whatever he sought to know.</p>
+<p data-source>In an instant, the blade shattered. Dorian turned away, but much of it hit his face, and he was wounded in many places. He began to bleed, but none of it seemed to matter to him. He remained in place, and seemingly did not need to exert himself while resisting Raziel’s attempts to wrestle him.</p>
+<p data-source>Then, Dorian was forcefully pushed backwards, only for a short distance, as if from an invisible power that emanated from Raziel. He landed on his feet effortlessly, and now he beamed. “Yes, yes!” he was saying.</p>
+<p data-source>Raziel seemed to grow taller, as I followed him with my gaze. But I realized that, rather, he was slowly being lifted into the air. He rose until we had to look up at him.</p>
+<p data-source>“Raziel!” Dorian shouted, his arms outstretched about him, a wide grin on his face. “Prince of the Second Heaven! Keeper of Secrets!”</p>
+<p data-source>“Silence!” Raziel said. He raised his hand and motioned towards Dorian.</p>
+<p data-source>And there was white light. Blinding white light. I shielded my eyes with my arm. I could see, barely, Dorian looking straight up at him still, his shades perhaps protecting his eyes, although the light was so bright that I wondered if they were sufficient. The light only kept getting brighter and brighter. My head was pulsating. A ringing came about in my ears. A thump beside me, and I realized that my clone had fallen to the floor. As I reached for him to help him up I lost my balance and fell and I too passed out…</p></div>
+    
+  </section>
+<section id="section-15" class="story-section" aria-labelledby="heading-15">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-15" tabindex="-1"><span class="sr-only">Section </span>XV</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>I woke up, and I realized I was on the floor. There were many people around now, and I was looking at their feet, pattering around. I turned on my side. My clone wasn’t there. I tried to sit up, and in trying to do so, only then did I realize that I was in pain. It took me a second to push through it and sit up.</p>
+<p data-source>I looked at the place where Raziel was. He was on the ground, unconscious. And Dorian was nowhere to be found. I pushed myself off the ground and stumbled towards him, having to push people out of my way, who tried to tell me to stop so that the paramedics who had arrived could help me. But I needed to know if Dorian was okay.</p>
+<p data-source>He was bleeding by the neck, although the wound did not seem very deep. He had burns on his right hand. He was covered in sweat.</p>
+<p data-source>“Someone!” I called out into the crowd that was forming there. “Someone, please help! Here!”</p>
+<p data-source>Three men came with equipment and a stretcher. One of them looked over Raziel. He took scissors from a bag and cut off his clothes, so that he may inspect Raziel’s body, which was battered and bruised in some places, but otherwise fine. No lacerations.</p>
+<p data-source>“Is he going to be okay?” I looked up.</p>
+<p data-source>And there he was. I recognized him.</p>
+<p data-source>“Yes,” Youssef said, standing up and motioning towards the stretcher. The two other men asked me to step aside, so that they could put Raz on it.</p>
+<p data-source>“He’s going to be fine,” Youssef said. “Don’t worry.” He took a step towards me and took out a pen from his pocket that had a flashlight on it. “How about you? Are you alright? Can you look into the light please?” And he shone it into my eyes. “You don’t feel anything?”</p>
+<p data-source>“No. I’m alright. Do you remember me?”</p>
+<p data-source>He turned the light off and placed it back in his shirt pocket. He looked at me in the face again. “No, sorry. Have we met before?”</p>
+<p data-source>“Annie’s exhibition,” I said. “My name’s Arya.”</p>
+<p data-source>“Oh.” He smiled at me. He glanced beside him to see that Raziel was being lifted and carried away. “Nice to see you again. I’m just sorry it had to be under these circumstances.”</p>
+<p data-source>I was going to say something else, but someone called him. He tapped my shoulder and said “nice to see you again,” and walked off.</p></div>
+    
+  </section>
+<section id="section-16" class="story-section" aria-labelledby="heading-16">
+    <header class="section-heading">
+      <span class="section-rule" aria-hidden="true"></span>
+      <h2 id="heading-16" tabindex="-1"><span class="sr-only">Section </span>XVI</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </header>
+    <div class="prose"><p data-source>Raziel had me as his emergency contact, and someone from Makati Med got in contact with me the following evening. At that point, I had gotten home, and my parents fussed over me and made sure that I was alright, in their own Filipino way, which meant that they blamed me as much as anyone. That I shouldn’t have gone, that I should have called the moment something happened. And in the evening when they finally left me alone my room to recover, I got the call that Raziel put me down as his emergency contact, and that I could come see him when I was able. Meanwhile, his insurance paid for everything.</p>
+<p data-source>I took this to mean that he could wait a little. In any case, I too was in pain, realizing only later that I had bruises on my body and wounds on my hands. I don’t know where they could have come from. I got calls from Juno and Emily and others the day after, asking if I was alright. Apparently, Juno and Emily had heard the commotion and looked for me and my clone, but they couldn’t find me and had to leave when they heard gunshots. I understood.</p>
+<p data-source>Elmer came with Juno, Emily, Danny, my clone, and me to visit Raziel at the hospital. He was eating when we came in. The first thing I thought was he looked like hell. He had a black eye. His lip was split in several places. He had large bruises on his forearms.</p>
+<p data-source>He thanked us for visiting. Everyone else settled down on the couch there, and I and my clone sat on the nook in front of the window that could double as a bed.</p>
+<p data-source>“I’m glad you’re all alright,” Raz said. He spooned porridge in his mouth and seemingly struggled to swallow. I couldn’t tell if he was having trouble eating again or because it wasted awful, as hospital food tends to be.</p>
+<p data-source>“I’m glad you’re alright, too,” Elmer said. “Who knows what could happen if you died?”</p>
+<p data-source>“Elmer…” Emily started.</p>
+<p data-source>“No, I mean…” Elmer held out his hands, trying to make out a point. “Look, you’re not meant to even be injured. So, if you die, what would happen?”</p>
+<p data-source>“Well, I didn’t die,” Raz said. It was pointed, but not as pointed as he probably wanted it to be because he was so weak. “I guess we’re going to have to find out some other time.”</p>
+<p data-source>“Who was that, Raz?” my clone said. “I’m sorry if you don’t want to talk about it yet.”</p>
+<p data-source>“There’s nothing to talk about,” Raz said. “I don’t know.”</p>
+<p data-source>“He seems dangerous,” I said.</p>
+<p data-source>“What did he do?” Juno said. “I mean, you told us he beat him up somehow.”</p>
+<p data-source>I and my clone have told them that we would explain when we were with Raz, as we couldn’t quite explain what happened properly either.</p>
+<p data-source>Raz kept eating like he didn’t hear us. I was about to call his attention when he looked up at us quickly and then returned to his food, hesitating.</p>
+<p data-source>“What I say here,” he finally said, “will stay in this room.” He looked at all of us with those bright, gray eyes, still as full as vitality as ever. “You must all promise me that what I say will never, ever be heard by anyone else.”</p>
+<p data-source>“Scary…” Juno muttered.</p>
+<p data-source>Raz took a sip of water and wiped his lips with a napkin. He settled back down against the raised part of his bed, so that he was reclining. “During the earliest times, when humanity had lived only thousands of years, there were those among us—the angels—who did not know how to regard them. We had lived with the Lord for an unmeasurable amount of time, and He in His wisdom had created these things for reasons that we could not fathom. And we had differing opinions about his newest creations. Some of my brothers thought that they should be destroyed, that they shouldn’t have been… Some wanted them for themselves.”</p>
+<p data-source>“Brothers?” Emily said. “So, all of you were related.”</p>
+<p data-source>Raz thought about this. “In a sense,” he said. “I mean, we weren’t physically born, in the way people are, but God created us, and we all trace our lineage to him.”</p>
+<p data-source>“Why ‘brothers’ though?” Elmer said.</p>
+<p data-source>“It’s a figure of speech,” Raz said. “Angels are sexless.”</p>
+<p data-source>“Verbiage is kind of sexist,” Juno said.</p>
+<p data-source>And everyone murmured and nodded in agreement.</p>
+<p data-source>“As I was saying…” Raz said loudly. “Some of my brothers went to the mortal plane and mated with human women, creating a different race of people called the Nephilim.”</p>
+<p data-source>“And that Dorian person was one of them?” my clone asked.</p>
+<p data-source>“The Nephilim no longer exist. As they too bred with humans, their powers diminished and they became almost indistinguishable from ordinary people. Almost. They still possess some of the divinity brought forth by their lineage. But not noble or good but corrupted and terrible.”</p>
+<p data-source>“So, what was he?” I said.</p>
+<p data-source>“I could not tell,” he said. “But knowing that he is out there, and maybe others… This is dangerous. It might be best for me to leave, so that I do not expose any of you to danger.”</p>
+<p data-source>“Those are just stories, right?” Juno said. “I mean, those angels and everything.”</p>
+<p data-source>“No, Juno,” Raz told her. “I’ve put you in the way of danger, and so I will tell you the truth. I am an angel.”</p>
+<p data-source>Juno laughed. “What?”</p>
+<p data-source>My clone looked at her. “Elmer embodied him.”</p>
+<p data-source>“Elmer…” Emily slapped him on the shoulder. “You have to stop doing that.”</p>
+<p data-source>Elmer shrugged. “I thought it was an interesting experiment.”</p>
+<p data-source>“Why don’t you go back to heaven?” Juno said. “Or wherever.”</p>
+<p data-source>“Ask him.” Raz motioned to Elmer, and once again we were all looking at him.</p>
+<p data-source>“The laptop broke.” Elmer scratched his head. “And I haven’t figured out how to fix it yet. I mean, I could start over, but I don’t even remember how I did it the first time.”</p>
+<p data-source>“Oh my god…” Juno said.</p>
+<p data-source>“I can’t risk putting you all in danger,” Raziel said. “I must go.”</p>
+<p data-source>“You’re not going anywhere,” Emily said. “We’re going to make sure Elmer rights this wrong.”</p>
+<p data-source>“They won’t come after us,” my clone said. “We were there the entire time. That Dorian guy didn’t do anything to us.”</p>
+<p data-source>“We don’t know what he or his associates will do,” Raziel said. “We don’t know what they’re capable of. But I am sure, as you have seen, that they are more powerful than any man.”</p>
+<p data-source>“See…” Juno said. “There’s that sexist language again.”</p>
+<p data-source>“Any person…” Raziel corrected himself, with some exasperation. “In any case, I don’t know if I can accept your help. But thank you.”</p>
+<p data-source>“That don’t make no sense, though,” I said. “Because you’re supposed to be my guardian. So you can’t go anywhere without me.”</p>
+<p data-source>This made Raziel pause.</p>
+<p data-source>Emily broke the silence. “It’s settled. We’re all in this together.”</p>
+<p data-source>Juno side-eyed Elmer. “Why do you always put us in these types of situations?”</p>
+<p data-source>Elmer had no reply for this.</p>
+<p data-source>Right about that time, the door opened, and a doctor came in to check on Raziel. I took this opportunity to look at my phone. But then my clone elbowed me, and I looked at him. He nudged his head towards the middle of the room, and I realized—It was Youssef again, now with a white coat. A pin on his pocket said, “Dr. Y. Sayed.”</p>
+<p data-source>“Just here for a checkup,” the doctor said. “Hope everything is alright?” He picked up the clipboard that was hanging at the end of the bed and went over it.</p>
+<p data-source>I realized that everyone except Raziel was looking at me.</p>
+<p data-source>I didn’t know what to say.</p>
+<p data-source>Raziel and the doctor spoke for a bit about how he felt, about whether the medicine was easing his pain. Then, when they were done, Raz said: “By the way, doctor, are you single?”</p>
+<p data-source>The others laughed. I widened my eyes at Raziel, but he had a sly smile on his face. He knew he was up to no good, and he was committed to it.</p>
+<p data-source>The doctor chuckled a bit. He decided to play along. “Yes. I am single right now.”</p>
+<p data-source>“My friend Arya wanted me to ask you if you wanted to have coffee with her? Whenever you’re free?”</p>
+<p data-source>He looked at me. It seems like he remembered me.</p>
+<p data-source>He smiled and said, “Yes. I’d like that.”</p>
+<p data-source>And that’s how we met.</p></div>
+    <div class="end-mark" aria-label="The end"><span></span>THE END<span></span></div>
+  </section>
+  </main>
+  <nav class="pager" aria-label="Story section navigation">
+    <div class="pager-inner">
+      <button type="button" id="previous" class="page-button" disabled aria-label="Previous section"><span class="arrow" aria-hidden="true">←</span><span id="previous-label">Previous</span></button>
+      <button type="button" class="section-status" data-open-contents aria-haspopup="dialog" aria-label="Choose a page"><span class="status-label" id="status-label">Fexmouth</span><span id="section-count">Title page</span></button>
+      <button type="button" id="next" class="page-button" aria-label="Begin reading"><span id="next-label">Begin</span><span class="arrow" aria-hidden="true">→</span></button>
+    </div>
+  </nav>
+  <dialog id="contents" aria-labelledby="contents-heading">
+    <div class="dialog-header"><div><h2 id="contents-heading">The Yule Ball</h2><p>16 sections · 12,858 words</p></div><button class="close-button" id="close-contents" type="button" aria-label="Close section list">×</button></div>
+    <ol class="contents-list"><li><a class="contents-link" href="#title-page" data-section="0"><span class="contents-number" aria-hidden="true">—</span><span class="contents-copy"><strong>Title page</strong><span>Cast, recap, and the Fexmouth Wiki</span></span></a></li><li><a class="contents-link" href="#section-1" data-section="1"><span class="contents-number" aria-hidden="true">01</span><span class="contents-copy"><strong>Section I</strong><span>I had been dating a doctor for a while. A Moroccan doctor…</span></span><span class="contents-time">4 min</span></a></li>
+<li><a class="contents-link" href="#section-2" data-section="2"><span class="contents-number" aria-hidden="true">02</span><span class="contents-copy"><strong>Section II</strong><span>After that, I kept thinking about this person, if only because they…</span></span><span class="contents-time">4 min</span></a></li>
+<li><a class="contents-link" href="#section-3" data-section="3"><span class="contents-number" aria-hidden="true">03</span><span class="contents-copy"><strong>Section III</strong><span>My clone was going through God of War. He was playing on…</span></span><span class="contents-time">3 min</span></a></li>
+<li><a class="contents-link" href="#section-4" data-section="4"><span class="contents-number" aria-hidden="true">04</span><span class="contents-copy"><strong>Section IV</strong><span>Annie, Juno, and I met that weekend at Café Breton, which was…</span></span><span class="contents-time">3 min</span></a></li>
+<li><a class="contents-link" href="#section-5" data-section="5"><span class="contents-number" aria-hidden="true">05</span><span class="contents-copy"><strong>Section V</strong><span>My clone and I bought tickets to the Yule Ball, and when…</span></span><span class="contents-time">5 min</span></a></li>
+<li><a class="contents-link" href="#section-6" data-section="6"><span class="contents-number" aria-hidden="true">06</span><span class="contents-copy"><strong>Section VI</strong><span>I had to go to Elmer’s to talk to Quibble, because I…</span></span><span class="contents-time">5 min</span></a></li>
+<li><a class="contents-link" href="#section-7" data-section="7"><span class="contents-number" aria-hidden="true">07</span><span class="contents-copy"><strong>Section VII</strong><span>The day of the ball, I was laying down my clothes on…</span></span><span class="contents-time">3 min</span></a></li>
+<li><a class="contents-link" href="#section-8" data-section="8"><span class="contents-number" aria-hidden="true">08</span><span class="contents-copy"><strong>Section VIII</strong><span>The Ball started at 8PM, and we were on the road by…</span></span><span class="contents-time">3 min</span></a></li>
+<li><a class="contents-link" href="#section-9" data-section="9"><span class="contents-number" aria-hidden="true">09</span><span class="contents-copy"><strong>Section IX</strong><span>The ticket price was steep, but from what I saw when I…</span></span><span class="contents-time">4 min</span></a></li>
+<li><a class="contents-link" href="#section-10" data-section="10"><span class="contents-number" aria-hidden="true">10</span><span class="contents-copy"><strong>Section X</strong><span>I’ve been to parties a few times in my life. Enough to…</span></span><span class="contents-time">4 min</span></a></li>
+<li><a class="contents-link" href="#section-11" data-section="11"><span class="contents-number" aria-hidden="true">11</span><span class="contents-copy"><strong>Section XI</strong><span>The venue was large enough that there were several activities happening at…</span></span><span class="contents-time">2 min</span></a></li>
+<li><a class="contents-link" href="#section-12" data-section="12"><span class="contents-number" aria-hidden="true">12</span><span class="contents-copy"><strong>Section XII</strong><span>At this time, my clone and I were at the dueling event.…</span></span><span class="contents-time">7 min</span></a></li>
+<li><a class="contents-link" href="#section-13" data-section="13"><span class="contents-number" aria-hidden="true">13</span><span class="contents-copy"><strong>Section XIII</strong><span>The bartender placed the drink in front of the boy. It was…</span></span><span class="contents-time">2 min</span></a></li>
+<li><a class="contents-link" href="#section-14" data-section="14"><span class="contents-number" aria-hidden="true">14</span><span class="contents-copy"><strong>Section XIV</strong><span>Fine,” Dorian said, releasing Raz’s face, so that his head falls limp.…</span></span><span class="contents-time">3 min</span></a></li>
+<li><a class="contents-link" href="#section-15" data-section="15"><span class="contents-number" aria-hidden="true">15</span><span class="contents-copy"><strong>Section XV</strong><span>I woke up, and I realized I was on the floor. There…</span></span><span class="contents-time">2 min</span></a></li>
+<li><a class="contents-link" href="#section-16" data-section="16"><span class="contents-number" aria-hidden="true">16</span><span class="contents-copy"><strong>Section XVI</strong><span>Raziel had me as his emergency contact, and someone from Makati Med…</span></span><span class="contents-time">6 min</span></a></li></ol>
+  </dialog>
+  <span class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></span>
+  <script>
+    (() => {
+      'use strict';
+      const sections = Array.from(document.querySelectorAll('.story-section'));
+      const reader = document.getElementById('reader');
+      const titlePage = document.getElementById('title-page');
+      const resume = document.getElementById('resume-reading');
+      const previous = document.getElementById('previous');
+      const next = document.getElementById('next');
+      const count = document.getElementById('section-count');
+      const progress = document.getElementById('reading-progress');
+      const contents = document.getElementById('contents');
+      const announcement = document.getElementById('announcement');
+      const links = Array.from(document.querySelectorAll('.contents-link'));
+      const storageKey = 'fexmouth-yule-ball-reader-v1';
+      const sectionWords = sections.map(section => section.querySelector('.prose').textContent.trim().split(/\s+/).length);
+      const totalWords = sectionWords.reduce((sum, n) => sum + n, 0);
+      let current = -1;
+      let textSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reading-size'));
+      let state = {};
+      try { state = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch (_) {}
+      if (typeof state !== 'object') state = {};
+      if (Number.isFinite(state.textSize)) textSize = Math.min(27, Math.max(17, state.textSize));
+      let lastSection = Number.isInteger(state.section) && state.section >= 0 && state.section < sections.length ? state.section : -1;
+      function save() {
+        if (current >= 0) lastSection = current;
+        try { localStorage.setItem(storageKey, JSON.stringify({ section: lastSection, textSize })); } catch (_) {}
+        resume.hidden = lastSection < 0;
+        if (lastSection >= 0) {
+          resume.href = '#section-' + (lastSection + 1);
+          resume.textContent = 'Continue at section ' + (lastSection + 1);
+        }
+      }
+      function updateProgress() {
+        if (current < 0) { progress.style.width = '0%'; return; }
+        const section = sections[current];
+        const rect = section.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const usableHeight = window.innerHeight - 150;
+        const distance = Math.max(1, rect.height - usableHeight);
+        const fraction = Math.min(1, Math.max(0, (window.scrollY - top + 95) / distance));
+        const read = sectionWords.slice(0, current).reduce((sum, n) => sum + n, 0) + sectionWords[current] * fraction;
+        progress.style.width = ((read / totalWords) * 100) + '%';
+      }
+      function applyTextSize() {
+        document.documentElement.style.setProperty('--reading-size', textSize + 'px');
+        document.getElementById('smaller').disabled = textSize <= 17;
+        document.getElementById('larger').disabled = textSize >= 27;
+        updateProgress();
+      }
+      function fromHash() {
+        if (location.hash === '#title-page') return -1;
+        const match = location.hash.match(/^#section-(\d+)$/);
+        if (!match) return null;
+        return Math.min(sections.length - 1, Math.max(0, Number(match[1]) - 1));
+      }
+      function showSection(index, { focus = false, historyMode = 'push', scroll = true } = {}) {
+        current = Math.max(-1, Math.min(sections.length - 1, index));
+        const atTitle = current === -1;
+        titlePage.classList.toggle('is-active', atTitle);
+        sections.forEach((section, i) => section.classList.toggle('is-active', i === current));
+        reader.classList.toggle('at-title', atTitle);
+        previous.disabled = atTitle;
+        document.getElementById('previous-label').textContent = current === 0 ? 'Title page' : 'Previous';
+        previous.setAttribute('aria-label', current === 0 ? 'Return to the title page' : 'Previous section');
+        next.disabled = current === sections.length - 1;
+        document.getElementById('next-label').textContent = atTitle ? 'Begin' : next.disabled ? 'The end' : 'Next';
+        next.setAttribute('aria-label', atTitle ? 'Begin reading, section one' : 'Next section');
+        document.getElementById('status-label').textContent = atTitle ? 'Fexmouth' : 'Section';
+        count.textContent = atTitle ? 'Title page' : String(current + 1).padStart(2, '0') + ' / ' + sections.length;
+        links.forEach(link => {
+          if (Number(link.dataset.section) - 1 === current) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+        if (historyMode !== 'none') {
+          try { history[historyMode === 'replace' ? 'replaceState' : 'pushState']({ section: current }, '', atTitle ? '#title-page' : '#section-' + (current + 1)); } catch (_) {}
+        }
+        if (focus) {
+          (atTitle ? document.getElementById('book-title') : sections[current].querySelector('h2')).focus({ preventScroll: true });
+          announcement.textContent = atTitle ? 'Title page. Cast, recap, and wiki links.' : 'Section ' + (current + 1) + ' of ' + sections.length;
+        }
+        if (scroll) window.scrollTo({ top: 0, behavior: 'instant' });
+        save();
+        updateProgress();
+      }
+      previous.addEventListener('click', () => showSection(current - 1, { focus: true }));
+      next.addEventListener('click', () => showSection(current + 1, { focus: true }));
+      document.querySelector('.brand').addEventListener('click', event => { event.preventDefault(); showSection(-1, { focus: true }); });
+      document.querySelectorAll('[data-begin], .skip-link').forEach(link => link.addEventListener('click', event => { event.preventDefault(); showSection(0, { focus: true }); }));
+      document.querySelectorAll('[data-story-link]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); showSection(Number(link.dataset.storyLink) - 1, { focus: true }); }));
+      document.querySelectorAll('[data-front-jump]').forEach(link => link.addEventListener('click', event => {
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }));
+      resume.addEventListener('click', event => { event.preventDefault(); showSection(lastSection >= 0 ? lastSection : 0, { focus: true }); });
+      document.querySelectorAll('[data-open-contents]').forEach(button => button.addEventListener('click', () => {
+        contents.showModal();
+        document.body.classList.add('dialog-open');
+        links.find(link => Number(link.dataset.section) - 1 === current).scrollIntoView({ block: 'nearest' });
+      }));
+      function closeContents() { contents.close(); }
+      document.getElementById('close-contents').addEventListener('click', closeContents);
+      contents.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+      contents.addEventListener('click', event => {
+        if (event.target !== contents) return;
+        const rect = contents.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeContents();
+      });
+      links.forEach(link => link.addEventListener('click', event => {
+        event.preventDefault();
+        closeContents();
+        showSection(Number(link.dataset.section) - 1, { focus: true });
+      }));
+      document.getElementById('smaller').addEventListener('click', () => {
+        textSize = Math.max(17, textSize - 1); applyTextSize(); save(); announcement.textContent = 'Text size ' + textSize + ' pixels';
+      });
+      document.getElementById('larger').addEventListener('click', () => {
+        textSize = Math.min(27, textSize + 1); applyTextSize(); save(); announcement.textContent = 'Text size ' + textSize + ' pixels';
+      });
+      window.addEventListener('popstate', () => showSection(fromHash() ?? -1, { historyMode: 'none', focus: true }));
+      window.addEventListener('hashchange', () => {
+        const section = fromHash();
+        if (section !== null && section !== current) showSection(section, { historyMode: 'none', focus: true });
+      });
+      document.addEventListener('keydown', event => {
+        if (contents.open || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.target.closest('button, a, input, textarea, select, [contenteditable]')) return;
+        if (event.key === 'ArrowRight' && current < sections.length - 1) { event.preventDefault(); showSection(current + 1, { focus: true }); }
+        if (event.key === 'ArrowLeft' && current >= 0) { event.preventDefault(); showSection(current - 1, { focus: true }); }
+      });
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (!scheduled) {
+          scheduled = true;
+          requestAnimationFrame(() => { scheduled = false; updateProgress(); });
+        }
+      }, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      applyTextSize();
+      const initialSection = fromHash() ?? -1;
+      showSection(initialSection, { historyMode: initialSection === -1 && !location.hash ? 'none' : 'replace', scroll: false });
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.addEventListener('load', () => window.scrollTo({ top: 0, behavior: 'instant' }), { once: true });
+    })();
+  </script>
+</body>
+</html>
